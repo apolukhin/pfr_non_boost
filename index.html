@@ -153,10 +153,10 @@
 
     <span class="identifier">db</span><span class="special">::</span><span class="identifier">insert</span><span class="special">(</span>
         <span class="string">"INSERT INTO user_infos(id, name, email, login) VALUES ($0, $1, $2, $3)"</span><span class="special">,</span>
-        <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">friend_info</span><span class="special">.</span><span class="identifier">id</span><span class="special">),</span>    <span class="comment">//////////////////////////////////////////////</span>
-        <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">friend_info</span><span class="special">.</span><span class="identifier">name</span><span class="special">),</span>  <span class="comment">// Users are forced to move individual fields</span>
-        <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">friend_info</span><span class="special">.</span><span class="identifier">email</span><span class="special">),</span> <span class="comment">// because your library can not iterate over</span>
-        <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">friend_info</span><span class="special">.</span><span class="identifier">login</span><span class="special">)</span>  <span class="comment">// the fields of a user provided structure</span>
+        <span class="identifier">friend_info</span><span class="special">.</span><span class="identifier">id</span><span class="special">,</span>    <span class="comment">/////////////////////////////////////////////////////////</span>
+        <span class="identifier">friend_info</span><span class="special">.</span><span class="identifier">name</span><span class="special">,</span>  <span class="comment">// Users are forced to enumerate fields because your</span>
+        <span class="identifier">friend_info</span><span class="special">.</span><span class="identifier">email</span><span class="special">,</span> <span class="comment">// library can not iterate over the fields of a user</span>
+        <span class="identifier">friend_info</span><span class="special">.</span><span class="identifier">login</span>  <span class="comment">// provided structure</span>
     <span class="special">);</span>
 
     <span class="keyword">return</span> <span class="identifier">friend_info</span><span class="special">;</span>
@@ -192,8 +192,8 @@
     <span class="identifier">db</span><span class="special">::</span><span class="identifier">insert</span><span class="special">(</span>
         <span class="string">"INSERT INTO user_infos(id, name, email, login) VALUES ($0, $1, $2, $3)"</span><span class="special">,</span>
         <span class="identifier">friend_info</span>     <span class="comment">////////////////////////////////////////////////////////////</span>
-                        <span class="comment">// PFR allows you to iterate over all the fields of a</span>
-                        <span class="comment">// user provided structure</span>
+                        <span class="comment">// PFR allows you to iterate over all the fields</span>
+                        <span class="comment">// of a user provided structure</span>
                         <span class="comment">//</span>
     <span class="special">);</span>
 
@@ -324,7 +324,7 @@
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
-<td align="left"><p><small>Last revised: September 11, 2021 at 15:10:43 GMT</small></p></td>
+<td align="left"><p><small>Last revised: September 11, 2021 at 16:28:32 GMT</small></p></td>
 <td align="right"><div class="copyright-footer"></div></td>
 </tr></table>
 <hr>
