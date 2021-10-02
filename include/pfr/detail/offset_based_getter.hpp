@@ -12,6 +12,7 @@
 
 #include <type_traits>
 #include <utility>
+#include <memory>  // std::addressof
 #include <pfr/detail/sequence_tuple.hpp>
 #include <pfr/detail/rvalue_t.hpp>
 #include <pfr/detail/size_t_.hpp>

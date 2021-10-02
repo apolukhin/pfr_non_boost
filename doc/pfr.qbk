@@ -55,10 +55,10 @@ user_info retrieve_friend(std::string_view name) {
 
     db::insert(
         "INSERT INTO user_infos(id, name, email, login) VALUES ($0, $1, $2, $3)",
-        std::move(friend_info.id),    //////////////////////////////////////////////
-        std::move(friend_info.name),  // Users are forced to move individual fields
-        std::move(friend_info.email), // because your library can not iterate over
-        std::move(friend_info.login)  // the fields of a user provided structure
+        friend_info.id,    /////////////////////////////////////////////////////////
+        friend_info.name,  // Users are forced to enumerate fields because your
+        friend_info.email, // library can not iterate over the fields of a user
+        friend_info.login  // provided structure
     );
 
     return friend_info;
@@ -94,8 +94,8 @@ user_info retrieve_friend(std::string_view name) {
     db::insert(
         "INSERT INTO user_infos(id, name, email, login) VALUES ($0, $1, $2, $3)",
         friend_info     ////////////////////////////////////////////////////////////
-                        // PFR allows you to iterate over all the fields of a
-                        // user provided structure
+                        // PFR allows you to iterate over all the fields
+                        // of a user provided structure
                         //
     );
 
@@ -169,7 +169,7 @@ PFR adds the following out-of-the-box functionality for aggregate initializable 
 * methods for cooperation with `std::tuple`
 * methods to visit each field of the structure
 
-PFR is a header only library that does not depend on Boost. You can just copy the content of the "include" folder [@https://github.com/boostorg/pfr from the github] into your project, and the library will work fine.
+PFR is a header only library that does not depend on Boost. You can just copy the content of the "include" folder [@https://github.com/boostorg/pfr from the PFR github] into your project, and the library will work fine. For a version of the library without `boost::` namespace see [@https://github.com/apolukhin/pfr_non_boost PFR].
 
 [caution Recommended C++ Standards are C++17 and above. Library requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported]
 
