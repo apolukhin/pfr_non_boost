@@ -2,25 +2,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Short Examples for the Impatient</title>
-<link rel="stylesheet" href="https://www.boost.org/doc/libs/1_72_0/doc/src/boostbook.css" type="text/css">
+<link rel="stylesheet" href="https://www.boost.org/doc/libs/1_81_0/doc/src/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
-<link rel="home" href="../index.html" title="Chapter 1. PFR 2.0">
-<link rel="up" href="../index.html" title="Chapter 1. PFR 2.0">
-<link rel="prev" href="../index.html" title="Chapter 1. PFR 2.0">
+<link rel="home" href="../index.html" title="Chapter 1. PFR 2.1">
+<link rel="up" href="../index.html" title="Chapter 1. PFR 2.1">
+<link rel="prev" href="../index.html" title="Chapter 1. PFR 2.1">
 <link rel="next" href="tutorial.html" title="Tutorial">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr>
-<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="https://www.boost.org/doc/libs/1_72_0/boost.png"></td>
-<td align="center"><a href="https://www.boost.org/doc/libs/1_72_0/index.html">Home</a></td>
-<td align="center"><a href="https://www.boost.org/doc/libs/1_72_0/libs/libraries.htm">Libraries</a></td>
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="https://www.boost.org/doc/libs/1_81_0/boost.png"></td>
+<td align="center"><a href="https://www.boost.org/doc/libs/1_81_0/index.html">Home</a></td>
+<td align="center"><a href="https://www.boost.org/doc/libs/1_81_0/libs/libraries.htm">Libraries</a></td>
 <td align="center"><a href="http://www.boost.org/users/people.html">People</a></td>
 <td align="center"><a href="http://www.boost.org/users/faq.html">FAQ</a></td>
-<td align="center"><a href="https://www.boost.org/doc/libs/1_72_0/more/index.htm">More</a></td>
+<td align="center"><a href="https://www.boost.org/doc/libs/1_81_0/more/index.htm">More</a></td>
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../index.html"><img src="https://www.boost.org/doc/libs/1_72_0/doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="https://www.boost.org/doc/libs/1_72_0/doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="https://www.boost.org/doc/libs/1_72_0/doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="tutorial.html"><img src="https://www.boost.org/doc/libs/1_72_0/doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../index.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="tutorial.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
@@ -48,7 +48,7 @@
 <tbody>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Get field by index and assign new value to that field</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Get field by index/type and assign new value to that field</span>
 
 <span class="keyword">struct</span> <span class="identifier">sample</span> <span class="special">{</span>
     <span class="keyword">char</span> <span class="identifier">c</span><span class="special">;</span>
@@ -57,13 +57,14 @@
 
 <span class="identifier">sample</span> <span class="identifier">var</span><span class="special">{};</span>
 <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">get</span><span class="special">&lt;</span><span class="number">1</span><span class="special">&gt;(</span><span class="identifier">var</span><span class="special">)</span> <span class="special">=</span> <span class="number">42.01f</span><span class="special">;</span>
+<span class="identifier">pfr</span><span class="special">::</span><span class="identifier">get</span><span class="special">&lt;</span><span class="keyword">char</span><span class="special">&gt;(</span><span class="identifier">var</span><span class="special">)</span> <span class="special">=</span> <span class="char">'A'</span><span class="special">;</span>
 
-<span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">var</span><span class="special">.</span><span class="identifier">f</span><span class="special">;</span> <span class="comment">// Outputs: 42.01</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">var</span><span class="special">.</span><span class="identifier">c</span> <span class="special">&lt;&lt;</span> <span class="identifier">var</span><span class="special">.</span><span class="identifier">f</span><span class="special">;</span> <span class="comment">// Outputs: A 42.01</span>
 </pre>
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="get.html" title="Function get">pfr::get</a></code>
+                <code class="computeroutput"><a class="link" href="get_idm2263.html" title="Function template get">pfr::get</a></code>
               </p>
             </td>
 </tr>
@@ -84,16 +85,16 @@
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="../reference_section.html#header.pfr.ops_hpp" title="Header &lt;pfr/ops.hpp&gt;">Header pfr/ops.hpp</a></code>:
+                <code class="computeroutput">pfr/ops.hpp</code>:
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="eq.html" title="Function eq">pfr::eq</a></code>
+                * <code class="computeroutput"><a class="link" href="eq_idm2836.html" title="Function template eq">pfr::eq</a></code>
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="ne.html" title="Function ne">pfr::ne</a></code>
+                * <code class="computeroutput"><a class="link" href="ne_idm2862.html" title="Function template ne">pfr::ne</a></code>
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="gt.html" title="Function gt">pfr::gt</a></code>
+                * <code class="computeroutput"><a class="link" href="gt_idm2914.html" title="Function template gt">pfr::gt</a></code>
               </p>
               <p>
                 * ...
@@ -175,7 +176,7 @@
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="../reference_section.html#header.pfr.ops_fields_hpp" title="Header &lt;pfr/ops_fields.hpp&gt;">Header pfr/ops_fields.hpp </a></code>:
+                <code class="computeroutput">pfr/ops_fields.hpp</code>:
               </p>
               <p>
                 * <code class="computeroutput"><a class="link" href="eq_fields.html" title="Function template eq_fields">pfr::eq_fields</a></code>
@@ -190,7 +191,7 @@
                 * ...
               </p>
               <p>
-                <code class="computeroutput"><a class="link" href="../reference_section.html#header.pfr.io_fields_hpp" title="Header &lt;pfr/io_fields.hpp&gt;">Header pfr/io_fields.hpp </a></code>
+                <code class="computeroutput">pfr/io_fields.hpp</code>
               </p>
               <p>
                 * <code class="computeroutput"><a class="link" href="io_fields.html" title="Function template io_fields">pfr::io_fields</a></code>
@@ -284,7 +285,7 @@
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="structure_tie.html" title="Function structure_tie">pfr::structure_tie</a></code>
+                <code class="computeroutput"><a class="link" href="structure_tie_idm2368.html" title="Function template structure_tie">pfr::structure_tie</a></code>
               </p>
             </td>
 </tr>
@@ -294,7 +295,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2016-2022 Antony Polukhin<p>
+<td align="right"><div class="copyright-footer">Copyright © 2016-2023 Antony Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -302,7 +303,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../index.html"><img src="https://www.boost.org/doc/libs/1_72_0/doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="https://www.boost.org/doc/libs/1_72_0/doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="https://www.boost.org/doc/libs/1_72_0/doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="tutorial.html"><img src="https://www.boost.org/doc/libs/1_72_0/doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../index.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="tutorial.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>
