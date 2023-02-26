@@ -1,4 +1,4 @@
-// Copyright 2016-2022 Antony Polukhin
+// Copyright 2016-2023 Antony Polukhin
 
 // Distributed under the Boost Software License, Version 1.0.
 // (See the accompanying file LICENSE_1_0.txt
@@ -91,7 +91,7 @@ void test_examples() {
 
   {
 //[pfr_quick_examples_get
-    // Get field by index and assign new value to that field
+    // Get field by index/type and assign new value to that field
 
     struct sample {
         char c;
@@ -100,8 +100,9 @@ void test_examples() {
 
     sample var{};
     pfr::get<1>(var) = 42.01f;
+    pfr::get<char>(var) = 'A';
 
-    std::cout << var.f; // Outputs: 42.01
+    std::cout << var.c << var.f; // Outputs: A 42.01
 //]
   }
 
