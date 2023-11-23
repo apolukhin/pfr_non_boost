@@ -4,8 +4,8 @@
 <title>Tutorial</title>
 <link rel="stylesheet" href="https://www.boost.org/doc/libs/1_81_0/doc/src/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
-<link rel="home" href="../index.html" title="Chapter 1. PFR 2.1">
-<link rel="up" href="../index.html" title="Chapter 1. PFR 2.1">
+<link rel="home" href="../index.html" title="Chapter 1. PFR 2.2">
+<link rel="up" href="../index.html" title="Chapter 1. PFR 2.2">
 <link rel="prev" href="short_examples_for_the_impatient.html" title="Short Examples for the Impatient">
 <link rel="next" href="limitations_and_configuration.html" title="Limitations and Configuration">
 </head>
@@ -37,6 +37,8 @@
       of getting operators </a></span></dt>
 <dt><span class="section"><a href="tutorial.html#pfr.tutorial.reflection_of_unions">Reflection of unions
       </a></span></dt>
+<dt><span class="section"><a href="tutorial.html#pfr.tutorial.reflection_of_field_name">Reflection of
+      field name </a></span></dt>
 </dl></div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
@@ -113,7 +115,7 @@
 </h3></div></div></div>
 <p>
         The following example shows how to access structure fields by index using
-        <code class="computeroutput"><a class="link" href="get_idm2263.html" title="Function template get">pfr::get</a></code>.
+        <code class="computeroutput"><a class="link" href="get_idm2511.html" title="Function template get">pfr::get</a></code>.
       </p>
 <p>
         Let's define some structure:
@@ -502,6 +504,36 @@
 <pre class="programlisting"><span class="identifier">error</span><span class="special">:</span> <span class="keyword">static_assert</span> <span class="identifier">failed</span> <span class="string">"====================&gt; PFR: For safety reasons it is forbidden
         to reflect unions. See `Reflection of unions` section in the docs for more info."</span>
 </pre>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="pfr.tutorial.reflection_of_field_name"></a><a class="link" href="tutorial.html#pfr.tutorial.reflection_of_field_name" title="Reflection of field name">Reflection of
+      field name </a>
+</h3></div></div></div>
+<p>
+        Since C++20 it's possible to read name of a structure field by index using
+        Boost.PFR library. The following example shows how to do it using <code class="computeroutput"><a class="link" href="get_name.html" title="Function template get_name">pfr::get_name</a></code>.
+      </p>
+<p>
+        Let's define some structure:
+      </p>
+<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">pfr</span><span class="special">/</span><span class="identifier">core_name</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+
+<span class="keyword">struct</span> <span class="identifier">foo</span> <span class="special">{</span>            <span class="comment">// defining structure</span>
+    <span class="keyword">int</span> <span class="identifier">some_integer</span><span class="special">;</span>
+    <span class="keyword">char</span> <span class="identifier">c</span><span class="special">;</span>
+<span class="special">};</span>
+</pre>
+<p>
+        We can access field's names of that structure by index:
+      </p>
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string_view</span> <span class="identifier">n1</span> <span class="special">=</span> <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">get_name</span><span class="special">&lt;</span><span class="number">0</span><span class="special">,</span> <span class="identifier">foo</span><span class="special">&gt;();</span> <span class="comment">// returns "some_integer"</span>
+<span class="keyword">constexpr</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string_view</span> <span class="identifier">n2</span> <span class="special">=</span> <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">get_name</span><span class="special">&lt;</span><span class="number">1</span><span class="special">,</span> <span class="identifier">foo</span><span class="special">&gt;();</span> <span class="comment">// returns "c"</span>
+</pre>
+<p>
+        See <a class="link" href="limitations_and_configuration.html" title="Limitations and Configuration"><span class="bold"><strong>Limitations
+        and Configuration</strong></span></a>.
+      </p>
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>

@@ -4,9 +4,9 @@
 <title>Short Examples for the Impatient</title>
 <link rel="stylesheet" href="https://www.boost.org/doc/libs/1_81_0/doc/src/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
-<link rel="home" href="../index.html" title="Chapter 1. PFR 2.1">
-<link rel="up" href="../index.html" title="Chapter 1. PFR 2.1">
-<link rel="prev" href="../index.html" title="Chapter 1. PFR 2.1">
+<link rel="home" href="../index.html" title="Chapter 1. PFR 2.2">
+<link rel="up" href="../index.html" title="Chapter 1. PFR 2.2">
+<link rel="prev" href="../index.html" title="Chapter 1. PFR 2.2">
 <link rel="next" href="tutorial.html" title="Tutorial">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -64,7 +64,26 @@
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="get_idm2263.html" title="Function template get">pfr::get</a></code>
+                <code class="computeroutput"><a class="link" href="get_idm2511.html" title="Function template get">pfr::get</a></code>
+              </p>
+            </td>
+</tr>
+<tr>
+<td>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Get name of field by index</span>
+
+<span class="keyword">struct</span> <span class="identifier">sample</span> <span class="special">{</span>
+    <span class="keyword">int</span> <span class="identifier">f1</span><span class="special">;</span>
+    <span class="keyword">long</span> <span class="identifier">f2</span><span class="special">;</span>
+<span class="special">};</span>
+
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">get_name</span><span class="special">&lt;</span><span class="number">0</span><span class="special">,</span> <span class="identifier">sample</span><span class="special">&gt;()</span>
+          <span class="special">&lt;&lt;</span> <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">get_name</span><span class="special">&lt;</span><span class="number">1</span><span class="special">,</span> <span class="identifier">sample</span><span class="special">&gt;();</span> <span class="comment">// Outputs: f1 f2</span>
+</pre>
+            </td>
+<td>
+              <p>
+                <code class="computeroutput"><a class="link" href="get_name.html" title="Function template get_name">pfr::get_name</a></code>
               </p>
             </td>
 </tr>
@@ -88,13 +107,13 @@
                 <code class="computeroutput">pfr/ops.hpp</code>:
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="eq_idm2836.html" title="Function template eq">pfr::eq</a></code>
+                * <code class="computeroutput"><a class="link" href="eq_idm3122.html" title="Function template eq">pfr::eq</a></code>
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="ne_idm2862.html" title="Function template ne">pfr::ne</a></code>
+                * <code class="computeroutput"><a class="link" href="ne_idm3148.html" title="Function template ne">pfr::ne</a></code>
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="gt_idm2914.html" title="Function template gt">pfr::gt</a></code>
+                * <code class="computeroutput"><a class="link" href="gt_idm3200.html" title="Function template gt">pfr::gt</a></code>
               </p>
               <p>
                 * ...
@@ -285,7 +304,7 @@
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="structure_tie_idm2368.html" title="Function template structure_tie">pfr::structure_tie</a></code>
+                <code class="computeroutput"><a class="link" href="structure_tie_idm2616.html" title="Function template structure_tie">pfr::structure_tie</a></code>
               </p>
             </td>
 </tr>

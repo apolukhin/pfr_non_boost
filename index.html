@@ -1,10 +1,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Chapter 1. PFR 2.1</title>
+<title>Chapter 1. PFR 2.2</title>
 <link rel="stylesheet" href="https://www.boost.org/doc/libs/1_81_0/doc/src/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
-<link rel="home" href="index.html" title="Chapter 1. PFR 2.1">
+<link rel="home" href="index.html" title="Chapter 1. PFR 2.2">
 <link rel="next" href="pfr/short_examples_for_the_impatient.html" title="Short Examples for the Impatient">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -21,7 +21,7 @@
 <div class="chapter">
 <div class="titlepage"><div>
 <div><h2 class="title">
-<a name="pfr"></a>Chapter 1. PFR 2.1</h2></div>
+<a name="pfr"></a>Chapter 1. PFR 2.2</h2></div>
 <div><p class="copyright">Copyright © 2016-2023 Antony Polukhin</p></div>
 <div><div class="legalnotice">
 <a name="pfr.legal"></a><p>
@@ -48,24 +48,27 @@
       of getting operators </a></span></dt>
 <dt><span class="section"><a href="pfr/tutorial.html#pfr.tutorial.reflection_of_unions">Reflection of unions
       </a></span></dt>
+<dt><span class="section"><a href="pfr/tutorial.html#pfr.tutorial.reflection_of_field_name">Reflection of
+      field name </a></span></dt>
 </dl></dd>
 <dt><span class="section"><a href="pfr/limitations_and_configuration.html">Limitations and Configuration</a></span></dt>
 <dt><span class="section"><a href="pfr/how_it_works.html">How it works</a></span></dt>
 <dt><span class="section"><a href="pfr/acknowledgements.html">Acknowledgements</a></span></dt>
-<dt><span class="section"><a href="reference_section.html">Reference Section</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html">Reference Section of PFR</a></span></dt>
 <dd><dl>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr_hpp">Header &lt;boost/include/pfr.hpp&gt;</a></span></dt>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr.config_hpp">Header &lt;boost/include/pfr/config.hpp&gt;</a></span></dt>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr.core_hpp">Header &lt;boost/include/pfr/core.hpp&gt;</a></span></dt>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr.functions_for_hpp">Header &lt;boost/include/pfr/functions_for.hpp&gt;</a></span></dt>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr.functors_hpp">Header &lt;boost/include/pfr/functors.hpp&gt;</a></span></dt>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr.io_hpp">Header &lt;boost/include/pfr/io.hpp&gt;</a></span></dt>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr.io_fields_hpp">Header &lt;boost/include/pfr/io_fields.hpp&gt;</a></span></dt>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr.ops_hpp">Header &lt;boost/include/pfr/ops.hpp&gt;</a></span></dt>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr.ops_fields_hpp">Header &lt;boost/include/pfr/ops_fields.hpp&gt;</a></span></dt>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr.traits_hpp">Header &lt;boost/include/pfr/traits.hpp&gt;</a></span></dt>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr.traits_fwd_hpp">Header &lt;boost/include/pfr/traits_fwd.hpp&gt;</a></span></dt>
-<dt><span class="section"><a href="reference_section.html#header.boost.include.pfr.tuple_size_hpp">Header &lt;boost/include/pfr/tuple_size.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr_hpp">Header &lt;pfr.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.config_hpp">Header &lt;pfr/config.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.core_hpp">Header &lt;pfr/core.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.core_name_hpp">Header &lt;pfr/core_name.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.functions_for_hpp">Header &lt;pfr/functions_for.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.functors_hpp">Header &lt;pfr/functors.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.io_hpp">Header &lt;pfr/io.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.io_fields_hpp">Header &lt;pfr/io_fields.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.ops_hpp">Header &lt;pfr/ops.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.ops_fields_hpp">Header &lt;pfr/ops_fields.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.traits_hpp">Header &lt;pfr/traits.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.traits_fwd_hpp">Header &lt;pfr/traits_fwd.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference_section_of_pfr.html#header.boost.include.pfr.tuple_size_hpp">Header &lt;pfr/tuple_size.hpp&gt;</a></span></dt>
 </dl></dd>
 </dl>
 </div>
@@ -323,10 +326,18 @@
           access to members by index or type
         </li>
 <li class="listitem">
+          access to member's names by index
+        </li>
+<li class="listitem">
           member type retrieval
         </li>
 <li class="listitem">
           methods for cooperation with <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">tuple</span></code>
+          for members
+        </li>
+<li class="listitem">
+          methods for cooperation with <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">array</span></code>
+          for member's names
         </li>
 <li class="listitem">
           methods to visit each field of the structure
@@ -348,14 +359,15 @@
 <th align="left">Caution</th>
 </tr>
 <tr><td align="left" valign="top"><p>
-        Recommended C++ Standards are C++17 and above. Library requires at least
-        C++14! Pre C++14 compilers (C++11, C++03...) are not supported
+        Recommended C++ Standards are C++20 and above. C++17 completely enough for
+        a user who doesn't want accessing name of structure member. Library requires
+        at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported
       </p></td></tr>
 </table></div>
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
-<td align="left"><p><small>Last revised: February 26, 2023 at 12:14:23 GMT</small></p></td>
+<td align="left"><p><small>Last revised: November 23, 2023 at 16:21:42 GMT</small></p></td>
 <td align="right"><div class="copyright-footer"></div></td>
 </tr></table>
 <hr>
