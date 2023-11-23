@@ -1,6 +1,6 @@
 [library PFR
     [quickbook 1.6]
-    [version 2.1]
+    [version 2.2]
     [copyright 2016-2023 Antony Polukhin]
     [category Language Features Emulation]
     [license
@@ -181,14 +181,16 @@ PFR adds the following out-of-the-box functionality for aggregate initializable 
 * hash
 * IO streaming
 * access to members by index or type
+* access to member's names by index
 * member type retrieval
-* methods for cooperation with `std::tuple`
+* methods for cooperation with `std::tuple` for members
+* methods for cooperation with `std::array` for member's names
 * methods to visit each field of the structure
 * trait to detect potential ability to reflect type, and ability to override trait's decision in user-side code
 
 PFR is a header only library that does not depend on Boost. You can just copy the content of the "include" folder [@https://github.com/boostorg/pfr from the PFR github] into your project, and the library will work fine. For a version of the library without `boost::` namespace see [@https://github.com/apolukhin/pfr_non_boost PFR].
 
-[caution Recommended C++ Standards are C++17 and above. Library requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported]
+[caution Recommended C++ Standards are C++20 and above. C++17 completely enough for a user who doesn't want accessing name of structure member. Library requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported]
 
 [endsect]
 
@@ -203,6 +205,9 @@ PFR is a header only library that does not depend on Boost. You can just copy th
 [
     [ [pfr_quick_examples_get] ]
     [ [funcref pfr::get] ]
+][
+    [ [pfr_quick_examples_get_name] ]
+    [ [funcref pfr::get_name] ]
 ][
     [ [pfr_quick_examples_ops] ]
     [
@@ -269,6 +274,7 @@ PFR is a header only library that does not depend on Boost. You can just copy th
 
 [import ../example/sample_printing.cpp]
 [import ../example/get.cpp]
+[import ../example/get_name.cpp]
 
 
 [section Why tuples are bad and aggregates are more preferable?]
@@ -448,12 +454,21 @@ error: static_assert failed "====================> PFR: For safety reasons it is
 
 [endsect]
 
+
+[section Reflection of field name ]
+
+[pfr_example_get_name]
+
+See [link pfr.limitations_and_configuration [*Limitations and Configuration]].
+
+[endsect]
+
 [endsect]
 
 
 [section Limitations and Configuration]
 
-[caution Recommended C++ Standards are C++17 and above. Library requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported. ]
+[caution Recommended C++ Standards are C++20 and above. C++17 completely enough for a user who doesn't want accessing name of structure member. Library requires at least C++14! Pre C++14 compilers (C++11, C++03...) are not supported. ]
 
 PFR library works with types that satisfy the requirements of `SimpleAggregate`: aggregate types without base classes, `const` fields, references, or C arrays:
 
@@ -475,6 +490,11 @@ struct aggregate : empty { // not a SimpleAggregate
 ```
 The library may work with aggregates that don't satisfy the requirements of `SimpleAggregate`, but the behavior tends to be non-portable.
 
+PFRs extraction of field name works with a `SimpleAggregate` with non-internal linkage (with aggregats that could be used as `extern T t;`).
+Do not use this functionality with anonymous structures, local structures
+or a structure defined inside anonymous namespace as the behavior tends to be non-portable.
+
+
 [h2 Configuration Macro]
 
 By default PFR [*auto-detects your compiler abilities] and automatically defines the configuration macro into appropriate values. If you wish to override that behavior, just define:
@@ -485,6 +505,9 @@ By default PFR [*auto-detects your compiler abilities] and automatically defines
     [[*PFR_USE_STD_MAKE_INTEGRAL_SEQUENCE*] [Define to `0` if you are hit by the template instantiation depth issues with `std::make_integer_sequence` and wish to use PFR version of that metafunction. Define to `1` to override PFR detection logic. ]]
     [[*PFR_HAS_GUARANTEED_COPY_ELISION*] [Define to `0` if your compiler does not implement C++17 guaranteed copy elision properly and fails to reflect aggregates with non-movable fields. Define to `1` to override PFR detection logic. ]]
     [[*PFR_ENABLE_IMPLICIT_REFLECTION*] [Define to `0` if you are hit by lots of non-effective choices made by implicitly reflection. Define to `1` to override PFR detection logic. ]]
+    [[*PFR_CORE_NAME_ENABLED*] [On platforms where field name extraction is not supported, the 'pfr/config.hpp' header defines the PFR_CORE_NAME_ENABLED macro equal to 0. Defining this macro as 0 before including the header disables the ability to get a field name. ]]
+    [[*PFR_FUNCTION_SIGNATURE*] [For known compilers defined to a compiler specific macro, that outputs the whole function signature including non-type template parameters. ]]
+    [[*PFR_CORE_NAME_PARSING*] [Describes extraction of field name from PFR_FUNCTION_SIGNATURE macro. See details below. ]]
     [[*PFR_ENABLED*] [On platforms where PFR is not supported, the `pfr/config.hpp` header defines the PFR_ENABLED macro equal to 0. Defining this macro as 0 before including the header disables the PFR library. ]]
 ]
 
@@ -502,6 +525,29 @@ The PFRs reflection has some limitations that depend on a C++ Standard and compi
         * T must be constexpr aggregate initializable and all its fields must be constexpr default constructible
         * [funcref pfr::get], [funcref pfr::structure_to_tuple], [funcref pfr::structure_tie], [headerref pfr/core.hpp pfr::tuple_element] require T to be a POD type with built-in types only.
 
+The PFRs extraction of field name has some limitations that depend on a C++ Standard and compiler capabilities:
+
+* T should be usable like `extern T t;`, i.e. has a non-internal linkage.
+
+[h2 Adjusting PFR_CORE_NAME_PARSING]
+
+`PFR_CORE_NAME_PARSING` is already set up for most of the popular compilers. You need to adjust it only
+if some static_assert in the library complained on `PFR_CORE_NAME_PARSING`.
+
+To do that:
+
+# Build `test/core_name/print_name.cpp` with your compiler and run it
+# Define PFR_CORE_NAME_PARSING to `(skip_at_begin, skip_at_end, "")`, where
+    * `skip_at_begin` is equal to characters count before the first occurrence of `user_defined_field` in output
+    * `skip_at_end` is equal to characters count after last occurrence of `user_defined_field` in output
+# Check that `test/core_name/print_name.cpp` returns "user_defined_field"
+# If it does not return `user_defined_field`, then define PFR_CORE_NAME_PARSING to `(skip_at_begin, skip_at_end, "T = ")`, where
+    * `skip_at_begin` is equal to `skip_at_begin` at step 2
+    * `skip_at_end` is equal to `skip_at_end` at step 2
+    * `"T = "` is equal to characters that are right before the `user_defined_field` in output, use `backward("T = ")` to search for the occurange in the string from the right
+# (optional, but highly recommended) [@https://github.com/boostorg/pfr/issues create ticket] with
+feature request to add your compiler to supported compilers list. Include
+parameters provided to `PFR_CORE_NAME_PARSING` macro [*and] the initial output of `test/core_name/print_name.cpp`.
 
 [endsect]
 

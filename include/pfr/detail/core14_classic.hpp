@@ -53,7 +53,7 @@ namespace typeid_conversions {
 #ifdef _MSC_VER
 #   pragma warning( push )
     // '<<': check operator precedence for possible error; use parentheses to clarify precedence
-#   pragma warning( disable : 4554 ) 
+#   pragma warning( disable : 4554 )
 #endif
 
 constexpr std::size_t native_types_mask = 31;
@@ -346,7 +346,7 @@ constexpr size_array<N> get_type_offsets() noexcept {
     return offsets;
 }
 
-///////////////////// Returns array of typeids and zeros if construtor of a type accepts sizeof...(I) parameters
+///////////////////// Returns array of typeids and zeros if constructor of a type accepts sizeof...(I) parameters
 template <class T, std::size_t N, std::size_t... I>
 constexpr void* flat_type_to_array_of_type_ids(std::size_t* types, std::index_sequence<I...>) noexcept
 {

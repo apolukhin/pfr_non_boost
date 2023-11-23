@@ -32,6 +32,7 @@ local doxygen_params =
         <doxygen:param>"ALIASES= \\
             \"forcedlink{1}=\\xmlonly<link linkend='pfr.\\1'>\\endxmlonly pfr::\\1\\xmlonly</link>\\endxmlonly\" \\
             \"podops=\\b See \\b Also : \\xmlonly<link linkend='pfr.tutorial.three_ways_of_getting_operators'>\\endxmlonly 'Three ways of getting operators' \\xmlonly</link>\\endxmlonly\" \\
+            \"fnrefl=\\b See \\b Also : \\xmlonly<link linkend='pfr.tutorial.reflection_of_field_name'>\\endxmlonly 'Reflection of field names' \\xmlonly</link>\\endxmlonly\" \\
             \"customio=\\b See \\b Also : \\xmlonly<link linkend='pfr.tutorial.custom_printing_of_aggregates'>\\endxmlonly 'Custom printing of aggregates' \\xmlonly</link>\\endxmlonly for info on how to implement your own manipulator with custom format.\" \\
             \"aggregate=\\xmlonly<link linkend='pfr.limitations_and_configuration'>\\endxmlonly simple aggregate \\xmlonly</link>\\endxmlonly\" \\
         "
@@ -46,7 +47,7 @@ doxygen autodoc_pfr
         [ glob ../include/pfr/*.hpp ]
     :
         $(doxygen_params)
-        <xsl:param>"boost.doxygen.reftitle=Reference Section"
+        <xsl:param>"boost.doxygen.reftitle=Reference Section of PFR"
     ;
 
 boostbook pfr-doc

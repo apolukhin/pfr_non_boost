@@ -98,6 +98,33 @@
 #   endif
 #endif
 
+#ifndef PFR_CORE_NAME_ENABLED
+#   if  (__cplusplus >= 202002L) || (defined(_MSVC_LANG) && (_MSVC_LANG >= 202002L))
+#       if (defined(__cpp_nontype_template_args) && __cpp_nontype_template_args >= 201911) \
+         || (defined(__clang_major__) && __clang_major__ >= 12)
+#           define PFR_CORE_NAME_ENABLED 1
+#       else
+#           define PFR_CORE_NAME_ENABLED 0
+#       endif
+#   else
+#       define PFR_CORE_NAME_ENABLED 0
+#   endif
+#endif
+
+
+#ifndef PFR_CORE_NAME_PARSING
+#   if defined(_MSC_VER)
+#       define PFR_CORE_NAME_PARSING (sizeof("auto __cdecl pfr::detail::name_of_field_impl<") - 1, sizeof(">(void) noexcept") - 1, backward("->"))
+#   elif defined(__clang__)
+#       define PFR_CORE_NAME_PARSING (sizeof("auto pfr::detail::name_of_field_impl() [MsvcWorkaround = ") - 1, sizeof("}]") - 1, backward("."))
+#   elif defined(__GNUC__)
+#       define PFR_CORE_NAME_PARSING (sizeof("consteval auto pfr::detail::name_of_field_impl() [with MsvcWorkaround = ") - 1, sizeof(")]") - 1, backward("::"))
+#   else
+// Default parser for other platforms... Just skip nothing!
+#       define PFR_CORE_NAME_PARSING (0, 0, "")
+#   endif
+#endif
+
 #if defined(__has_cpp_attribute)
 #   if __has_cpp_attribute(maybe_unused)
 #       define PFR_MAYBE_UNUSED [[maybe_unused]]

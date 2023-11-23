@@ -1,5 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
-<library-reference id="reference_section"><title>Reference Section</title><header name="boost/include/pfr.hpp">
+<library-reference id="reference_section_of_pfr"><title>Reference Section of PFR</title><header name="boost/include/pfr.hpp">
 <para>Includes all the Boost.PFR headers </para></header>
 <header name="boost/include/pfr/config.hpp">
 <para>Contains all the macros that describe Boost.PFR configuration, like PFR_ENABLED</para><para><note><para>This header file doesn't require C++14 Standard and supports all C++ compilers, even pre C++14 compilers (C++11, C++03...). </para>
@@ -10,6 +10,8 @@
 <macro name="PFR_USE_STD_MAKE_INTEGRAL_SEQUENCE"/>
 <macro name="PFR_HAS_GUARANTEED_COPY_ELISION"/>
 <macro name="PFR_ENABLE_IMPLICIT_REFLECTION"/>
+<macro name="PFR_CORE_NAME_ENABLED"/>
+<macro name="PFR_CORE_NAME_PARSING"/>
 <macro name="PFR_MAYBE_UNUSED"/>
 <macro name="PFR_ENABLED"/>
 </header>
@@ -19,6 +21,8 @@
 </programlisting> </para></description><type><emphasis>unspecified</emphasis></type></typedef>
 <typedef name="tuple_element_t"><purpose>Type of a field with index <computeroutput>I</computeroutput> in <link linkend="pfr.limitations_and_configuration"> simple aggregate </link> <computeroutput>T</computeroutput>. </purpose><description><para><emphasis role="bold">Example:</emphasis> <programlisting language="c++">std::vector&lt; pfr::tuple_element_t&lt;0, my_structure&gt; &gt; v;
 </programlisting> </para></description><type>typename tuple_element&lt; I, T &gt;::type</type></typedef>
+
+
 
 
 
@@ -112,7 +116,7 @@ assert(s.s == 11);
 <function name="structure_tie"><type>constexpr auto</type><template>
           <template-type-parameter name="T"/>
         </template><parameter name=""><paramtype>T &amp;&amp;</paramtype></parameter><parameter name=""><paramtype>std::enable_if_t&lt; std::is_rvalue_reference&lt; T &amp;&amp; &gt;::value &gt; *</paramtype><default>nullptr</default></parameter></function>
-<function name="for_each_field"><type>void</type><template>
+<function name="for_each_field"><type>constexpr void</type><template>
           <template-type-parameter name="T"/>
           <template-type-parameter name="F"/>
         </template><parameter name="value"><paramtype>T &amp;&amp;</paramtype><description><para>To each field of this variable will be the <computeroutput>func</computeroutput> applied.</para></description></parameter><parameter name="func"><paramtype>F &amp;&amp;</paramtype><description><para>must have one of the following signatures:<itemizedlist>
@@ -137,6 +141,62 @@ auto [p, s] = f();
 pfr::tie_from_structure(p, s) = f();
 </programlisting> </para></description><returns><para>an object with lvalue references to <computeroutput>args...</computeroutput>; on assignment of an <link linkend="pfr.limitations_and_configuration"> simple aggregate </link> value to that object each field of an aggregate is assigned to the corresponding <computeroutput>args...</computeroutput> reference.</para>
 </returns></function>
+</namespace>
+</header>
+<header name="boost/include/pfr/core_name.hpp">
+<para>Contains functions <link linkend="pfr.get_name"> pfr::get_name </link> and <link linkend="pfr.names_as_array"> pfr::names_as_array </link> to know which names each field of any <link linkend="pfr.limitations_and_configuration"> simple aggregate </link> has.</para><para><emphasis role="bold">See</emphasis> <emphasis role="bold">Also</emphasis> : <link linkend="pfr.tutorial.reflection_of_field_name"> 'Reflection of field names' </link> for details.</para><para><emphasis role="bold">Synopsis:</emphasis> </para><namespace name="pfr">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<function name="get_name"><type>constexpr std::string_view</type><template>
+          <template-nontype-parameter name="I"><type>std::size_t</type></template-nontype-parameter>
+          <template-type-parameter name="T"/>
+        </template><purpose>Returns name of a field with index <computeroutput>I</computeroutput> in <link linkend="pfr.limitations_and_configuration"> simple aggregate </link> <computeroutput>T</computeroutput>. </purpose><description><para><emphasis role="bold">Example:</emphasis> <programlisting language="c++">struct my_struct { int i, short s; };
+
+assert(pfr::get_name&lt;0, my_struct&gt;() == "i");
+assert(pfr::get_name&lt;1, my_struct&gt;() == "s");
+</programlisting> </para></description></function>
+<function name="names_as_array"><type>constexpr std::array&lt; std::string_view, pfr::tuple_size_v&lt; T &gt; &gt;</type><template>
+          <template-type-parameter name="T"/>
+        </template><purpose>Creates a <computeroutput>std::array</computeroutput> from names of fields of an <link linkend="pfr.limitations_and_configuration"> simple aggregate </link> <computeroutput>T</computeroutput>. </purpose><description><para><emphasis role="bold">Example:</emphasis> <programlisting language="c++">struct my_struct { int i, short s; };
+std::array&lt;std::string_view, 2&gt; a = pfr::names_as_array&lt;my_struct&gt;();
+assert(a[0] == "i");
+</programlisting> </para></description></function>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </namespace>
 </header>
 <header name="boost/include/pfr/functions_for.hpp">
@@ -318,6 +378,8 @@ std::unordered_set&lt;
 
 
 
+
+
 </namespace>
 </header>
 <header name="boost/include/pfr/io.hpp">
@@ -362,6 +424,8 @@ ss &gt;&gt; pfr::io(x);
 assert(x.i == 12);
 assert(x.s == 13);
 </programlisting></para><para><emphasis role="bold">See</emphasis> <emphasis role="bold">Also</emphasis> : <link linkend="pfr.tutorial.custom_printing_of_aggregates"> 'Custom printing of aggregates' </link> for info on how to implement your own manipulator with custom format. </para></description></function>
+
+
 
 
 
@@ -445,6 +509,8 @@ std::istream&amp; operator&gt;&gt;(std::istream&amp; is, my_struct&amp; x) {
 
 
 
+
+
 </namespace>
 </header>
 <header name="boost/include/pfr/ops.hpp">
@@ -468,7 +534,7 @@ assert(pfr::lt(s1, s2));
 <function name="eq"><type><emphasis>unspecified</emphasis></type><template>
           <template-type-parameter name="T"/>
           <template-type-parameter name="U"/>
-        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for equality using their own comparison and conversion operators; if no operators avalable returns <link linkend="pfr.eq_fields"> pfr::eq_fields </link>(lhs, rhs). </purpose><description><para>
+        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for equality using their own comparison and conversion operators; if no operators available returns <link linkend="pfr.eq_fields"> pfr::eq_fields </link>(lhs, rhs). </purpose><description><para>
 </para></description><returns><para>true if lhs is equal to rhs; false otherwise </para>
 </returns></function>
 <function name="eq"><type><emphasis>unspecified</emphasis></type><template>
@@ -478,7 +544,7 @@ assert(pfr::lt(s1, s2));
 <function name="ne"><type><emphasis>unspecified</emphasis></type><template>
           <template-type-parameter name="T"/>
           <template-type-parameter name="U"/>
-        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for inequality using their own comparison and conversion operators; if no operators avalable returns <link linkend="pfr.ne_fields"> pfr::ne_fields </link>(lhs, rhs). </purpose><description><para>
+        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for inequality using their own comparison and conversion operators; if no operators available returns <link linkend="pfr.ne_fields"> pfr::ne_fields </link>(lhs, rhs). </purpose><description><para>
 </para></description><returns><para>true if lhs is not equal to rhs; false otherwise </para>
 </returns></function>
 <function name="ne"><type><emphasis>unspecified</emphasis></type><template>
@@ -488,7 +554,7 @@ assert(pfr::lt(s1, s2));
 <function name="lt"><type><emphasis>unspecified</emphasis></type><template>
           <template-type-parameter name="T"/>
           <template-type-parameter name="U"/>
-        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for less-than using their own comparison and conversion operators; if no operators avalable returns <link linkend="pfr.lt_fields"> pfr::lt_fields </link>(lhs, rhs). </purpose><description><para>
+        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for less-than using their own comparison and conversion operators; if no operators available returns <link linkend="pfr.lt_fields"> pfr::lt_fields </link>(lhs, rhs). </purpose><description><para>
 </para></description><returns><para>true if lhs is less than rhs; false otherwise </para>
 </returns></function>
 <function name="lt"><type><emphasis>unspecified</emphasis></type><template>
@@ -498,7 +564,7 @@ assert(pfr::lt(s1, s2));
 <function name="gt"><type><emphasis>unspecified</emphasis></type><template>
           <template-type-parameter name="T"/>
           <template-type-parameter name="U"/>
-        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for greater-than using their own comparison and conversion operators; if no operators avalable returns <link linkend="pfr.lt_fields"> pfr::lt_fields </link>(lhs, rhs). </purpose><description><para>
+        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for greater-than using their own comparison and conversion operators; if no operators available returns <link linkend="pfr.lt_fields"> pfr::lt_fields </link>(lhs, rhs). </purpose><description><para>
 </para></description><returns><para>true if lhs is greater than rhs; false otherwise </para>
 </returns></function>
 <function name="gt"><type><emphasis>unspecified</emphasis></type><template>
@@ -508,7 +574,7 @@ assert(pfr::lt(s1, s2));
 <function name="le"><type><emphasis>unspecified</emphasis></type><template>
           <template-type-parameter name="T"/>
           <template-type-parameter name="U"/>
-        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for less-equal using their own comparison and conversion operators; if no operators avalable returns <link linkend="pfr.le_fields"> pfr::le_fields </link>(lhs, rhs). </purpose><description><para>
+        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for less-equal using their own comparison and conversion operators; if no operators available returns <link linkend="pfr.le_fields"> pfr::le_fields </link>(lhs, rhs). </purpose><description><para>
 </para></description><returns><para>true if lhs is less or equal to rhs; false otherwise </para>
 </returns></function>
 <function name="le"><type><emphasis>unspecified</emphasis></type><template>
@@ -518,7 +584,7 @@ assert(pfr::lt(s1, s2));
 <function name="ge"><type><emphasis>unspecified</emphasis></type><template>
           <template-type-parameter name="T"/>
           <template-type-parameter name="U"/>
-        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for greater-equal using their own comparison and conversion operators; if no operators avalable returns <link linkend="pfr.ge_fields"> pfr::ge_fields </link>(lhs, rhs). </purpose><description><para>
+        </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter><purpose>Compares lhs and rhs for greater-equal using their own comparison and conversion operators; if no operators available returns <link linkend="pfr.ge_fields"> pfr::ge_fields </link>(lhs, rhs). </purpose><description><para>
 </para></description><returns><para>true if lhs is greater or equal to rhs; false otherwise </para>
 </returns></function>
 <function name="ge"><type><emphasis>unspecified</emphasis></type><template>
@@ -527,12 +593,14 @@ assert(pfr::lt(s1, s2));
         </template><parameter name="lhs"><paramtype>const T &amp;</paramtype></parameter><parameter name="rhs"><paramtype>const U &amp;</paramtype></parameter></function>
 <function name="hash_value"><type><emphasis>unspecified</emphasis></type><template>
           <template-type-parameter name="T"/>
-        </template><parameter name="value"><paramtype>const T &amp;</paramtype></parameter><purpose>Hashes value using its own std::hash specialization; if no std::hash specialization avalable returns <link linkend="pfr.hash_fields"> pfr::hash_fields </link>(value). </purpose><description><para>
+        </template><parameter name="value"><paramtype>const T &amp;</paramtype></parameter><purpose>Hashes value using its own std::hash specialization; if no std::hash specialization available returns <link linkend="pfr.hash_fields"> pfr::hash_fields </link>(value). </purpose><description><para>
 </para></description><returns><para>std::size_t with hash of the value </para>
 </returns></function>
 <function name="hash_value"><type><emphasis>unspecified</emphasis></type><template>
           <template-type-parameter name="T"/>
         </template><parameter name="value"><paramtype>const T &amp;</paramtype></parameter></function>
+
+
 
 
 
@@ -635,6 +703,8 @@ assert(pfr::lt_fields(s1, s2));
 
 
 
+
+
 </namespace>
 </header>
 <header name="boost/include/pfr/traits.hpp">
@@ -648,7 +718,11 @@ assert(pfr::lt_fields(s1, s2));
     </template><specialization><template-arg>const volatile T</template-arg><template-arg>WhatFor</template-arg></specialization><inherit access="public">pfr::is_reflectable&lt; T, WhatFor &gt;</inherit></struct-specialization><struct-specialization name="is_reflectable"><template>
       <template-type-parameter name="T"/>
       <template-type-parameter name="WhatFor"/>
-    </template><specialization><template-arg>volatile T</template-arg><template-arg>WhatFor</template-arg></specialization><inherit access="public">pfr::is_reflectable&lt; T, WhatFor &gt;</inherit></struct-specialization>
+    </template><specialization><template-arg>volatile T</template-arg><template-arg>WhatFor</template-arg></specialization><inherit access="public">pfr::is_reflectable&lt; T, WhatFor &gt;</inherit></struct-specialization><typedef name="is_implicitly_reflectable"><description><para>Checks the input type for the potential to be reflected. Specialize <classname alt="pfr::is_reflectable">is_reflectable</classname> if you disagree with is_implicitly_reflectable's default decision. </para></description><type><emphasis>unspecified</emphasis></type></typedef>
+<data-member name="is_implicitly_reflectable_v"><type>constexpr bool</type><description><para>Checks the input type for the potential to be reflected. Specialize <classname alt="pfr::is_reflectable">is_reflectable</classname> if you disagree with is_implicitly_reflectable_v's default decision. </para></description></data-member>
+
+
+
 
 
 
@@ -693,13 +767,15 @@ assert(pfr::lt_fields(s1, s2));
 <struct name="is_reflectable"><template>
       <template-type-parameter name="T"/>
       <template-type-parameter name="WhatFor"/>
-    </template><description><para>Has a static const member variable <computeroutput>value</computeroutput> when it known that type T can or can't be reflected using Boost.PFR; otherwise, there is no member variable. Every user may(and in some difficult cases - should) specialize <classname alt="pfr::is_reflectable">is_reflectable</classname> on his own.</para><para><emphasis role="bold">Example:</emphasis> <programlisting language="c++">namespace pfr {
+    </template><description><para>Has a static const member variable <computeroutput>value</computeroutput> when it is known that type T can or can't be reflected using Boost.PFR; otherwise, there is no member variable. Every user may (and in some difficult cases - should) specialize <classname alt="pfr::is_reflectable">is_reflectable</classname> on his own.</para><para><emphasis role="bold">Example:</emphasis> <programlisting language="c++">namespace pfr {
     template&lt;class All&gt; struct is_reflectable&lt;A, All&gt; : std::false_type {};       // 'A' won't be interpreted as reflectable everywhere
     template&lt;&gt; struct is_reflectable&lt;B, boost_fusion_tag&gt; : std::false_type {};   // 'B' won't be interpreted as reflectable in only Boost Fusion
 }}
-</programlisting> <note><para><classname alt="pfr::is_reflectable">is_reflectable</classname> affects is_implicitly_reflectable, the decision made by <classname alt="pfr::is_reflectable">is_reflectable</classname> has more priority than is_implicitly_reflectable, because <classname alt="pfr::is_reflectable">is_reflectable</classname> is more sharp than is_implicitly_reflectable </para>
+</programlisting> <note><para><classname alt="pfr::is_reflectable">is_reflectable</classname> affects is_implicitly_reflectable, the decision made by <classname alt="pfr::is_reflectable">is_reflectable</classname> is used by is_implicitly_reflectable. </para>
 </note>
 </para></description></struct>
+
+
 
 
 
@@ -745,6 +821,8 @@ assert(pfr::lt_fields(s1, s2));
 </programlisting> </para></description><type><emphasis>unspecified</emphasis></type></typedef>
 <data-member name="tuple_size_v"><type>constexpr std::size_t</type><description><para><computeroutput>tuple_size_v</computeroutput> is a template variable that contains fields count in a T and works for any T that satisfies <link linkend="pfr.limitations_and_configuration"> simple aggregate </link>.</para><para><emphasis role="bold">Example:</emphasis> <programlisting language="c++">std::array&lt;int, pfr::tuple_size_v&lt;my_structure&gt; &gt; a;
 </programlisting> </para></description></data-member>
+
+
 
 
 

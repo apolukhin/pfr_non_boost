@@ -106,6 +106,23 @@ void test_examples() {
 //]
   }
 
+  // Disabled from testing since it's unportable
+#if 0
+  {
+//[pfr_quick_examples_get_name
+    // Get name of field by index
+
+    struct sample {
+        int f1;
+        long f2;
+    };
+
+    std::cout << pfr::get_name<0, sample>()
+              << pfr::get_name<1, sample>(); // Outputs: f1 f2
+//]
+  }
+#endif
+
 #if PFR_USE_CPP17 || PFR_USE_LOOPHOLE
   {
 //[pfr_quick_examples_structure_to_tuple

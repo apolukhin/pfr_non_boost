@@ -11,6 +11,7 @@
 
 #include <pfr/config.hpp>
 #include <pfr/core.hpp>
+#include <pfr/core_name.hpp>
 #include <pfr/functions_for.hpp>
 #include <pfr/functors.hpp>
 #include <pfr/io.hpp>
