@@ -23,15 +23,13 @@ function (add_boost_pfr_module NAME)
     target_compile_definitions(${NAME}_migration PRIVATE PFR_ATTACH_TO_GLOBAL_MODULE)
 endfunction()
 
-add_boost_pfr_module(boost_pfr_module)
-add_library(Boost::pfr_module ALIAS boost_pfr_module)
-add_library(Boost::pfr_module_migration ALIAS boost_pfr_module_migration)
+add_boost_pfr_module(pfr_module)
 
 if (BUILD_TESTING)
-    add_executable(boost_pfr_module_usage usage_sample.cpp)
-    target_link_libraries(boost_pfr_module_usage PRIVATE Boost::pfr_module)
+    add_executable(pfr_module_usage usage_sample.cpp)
+    target_link_libraries(pfr_module_usage PRIVATE pfr_module)
 
     # Make sure that mixing includes and imports is fine for different TU
-    add_executable(boost_pfr_module_usage_mu usage_test_mu1.cpp usage_test_mu2.cpp)
-    target_link_libraries(boost_pfr_module_usage_mu PRIVATE Boost::pfr_module_migration)
+    add_executable(pfr_module_usage_mu usage_test_mu1.cpp usage_test_mu2.cpp)
+    target_link_libraries(pfr_module_usage_mu PRIVATE pfr_module_migration)
 endif()

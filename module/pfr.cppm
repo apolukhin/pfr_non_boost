@@ -25,7 +25,7 @@ module;
 #include <variant>
 #endif
 
-export module Boost.PFR;
+export module PFR;
 
 #ifdef PFR_HAS_STD_MODULE
 import std;
