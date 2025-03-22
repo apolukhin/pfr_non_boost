@@ -7,7 +7,7 @@
 <link rel="home" href="../index.html" title="Chapter 1. PFR 2.2">
 <link rel="up" href="../reference_section_of_pfr.html#header.boost.include.pfr.core_name_hpp" title="Header &lt;pfr/core_name.hpp&gt;">
 <link rel="prev" href="get_name.html" title="Function template get_name">
-<link rel="next" href="../PFR_FUNCTIONS_FOR.html" title="Macro PFR_FUNCTIONS_FOR">
+<link rel="next" href="for_each_field_with_name.html" title="Function template for_each_field_with_name">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr>
@@ -20,7 +20,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="get_name.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../reference_section_of_pfr.html#header.boost.include.pfr.core_name_hpp"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../PFR_FUNCTIONS_FOR.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="get_name.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../reference_section_of_pfr.html#header.boost.include.pfr.core_name_hpp"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="for_each_field_with_name.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="pfr.names_as_array"></a><div class="titlepage"></div>
@@ -36,7 +36,7 @@
   <span class="keyword">constexpr</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">array</span><span class="special">&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string_view</span><span class="special">,</span> <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">tuple_size_v</span><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;</span> <span class="special">&gt;</span> 
   <span class="identifier">names_as_array</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm3850"></a><h2>Description</h2>
+<a name="idm4190"></a><h2>Description</h2>
 <p><span class="bold"><strong>Example:</strong></span> </p>
 <pre class="programlisting"><span class="keyword">struct</span> <span class="identifier">my_struct</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">i</span><span class="special">,</span> <span class="keyword">short</span> <span class="identifier">s</span><span class="special">;</span> <span class="special">}</span><span class="special">;</span>
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">array</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">string_view</span><span class="special">,</span> <span class="number">2</span><span class="special">&gt;</span> <span class="identifier">a</span> <span class="special">=</span> <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">names_as_array</span><span class="special">&lt;</span><span class="identifier">my_struct</span><span class="special">&gt;</span><span class="special">(</span><span class="special">)</span><span class="special">;</span>
@@ -47,7 +47,8 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2016-2023 Antony Polukhin<p>
+<td align="right"><div class="copyright-footer">Copyright © 2016-2024 Antony
+      Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -55,7 +56,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="get_name.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../reference_section_of_pfr.html#header.boost.include.pfr.core_name_hpp"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="../PFR_FUNCTIONS_FOR.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="get_name.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../reference_section_of_pfr.html#header.boost.include.pfr.core_name_hpp"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="for_each_field_with_name.html"><img src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

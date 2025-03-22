@@ -22,7 +22,8 @@
 <div class="titlepage"><div>
 <div><h2 class="title">
 <a name="pfr"></a>Chapter 1. PFR 2.2</h2></div>
-<div><p class="copyright">Copyright © 2016-2023 Antony Polukhin</p></div>
+<div><p class="copyright">Copyright © 2016-2024 Antony
+      Polukhin</p></div>
 <div><div class="legalnotice">
 <a name="pfr.legal"></a><p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
@@ -52,6 +53,7 @@
       field name </a></span></dt>
 </dl></dd>
 <dt><span class="section"><a href="pfr/limitations_and_configuration.html">Limitations and Configuration</a></span></dt>
+<dt><span class="section"><a href="pfr/pfr_as_a_c_20_module.html">PFR as a C++20 module</a></span></dt>
 <dt><span class="section"><a href="pfr/how_it_works.html">How it works</a></span></dt>
 <dt><span class="section"><a href="pfr/acknowledgements.html">Acknowledgements</a></span></dt>
 <dt><span class="section"><a href="reference_section_of_pfr.html">Reference Section of PFR</a></span></dt>
@@ -282,7 +284,7 @@
 <span class="keyword">void</span> <span class="identifier">Write</span><span class="special">(</span><span class="identifier">Writer</span><span class="special">&amp;</span> <span class="identifier">writer</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string_view</span> <span class="identifier">value</span><span class="special">);</span>
 
 <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
-<span class="identifier">std</span><span class="special">::</span><span class="identifier">enable_if_t</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">is_aggregate_v</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;&gt;</span> <span class="identifier">Write</span><span class="special">(</span><span class="identifier">Writer</span><span class="special">&amp;</span> <span class="identifier">writer</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">value</span><span class="special">)</span> <span class="special">{</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">enable_if_t</span><span class="special">&lt;</span><span class="identifier">pfr</span><span class="special">::</span><span class="identifier">is_implicitly_reflectable_v</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;&gt;</span> <span class="identifier">Write</span><span class="special">(</span><span class="identifier">Writer</span><span class="special">&amp;</span> <span class="identifier">writer</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">value</span><span class="special">)</span> <span class="special">{</span>
   <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">for_each_field</span><span class="special">(</span>
       <span class="identifier">value</span><span class="special">,</span> <span class="special">[&amp;</span><span class="identifier">writer</span><span class="special">](</span><span class="keyword">const</span> <span class="keyword">auto</span><span class="special">&amp;</span> <span class="identifier">field</span><span class="special">)</span> <span class="special">{</span> <span class="identifier">Write</span><span class="special">(</span><span class="identifier">writer</span><span class="special">,</span> <span class="identifier">field</span><span class="special">);</span> <span class="special">});</span>
 <span class="special">}</span>
@@ -367,7 +369,7 @@
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
-<td align="left"><p><small>Last revised: November 23, 2023 at 16:21:42 GMT</small></p></td>
+<td align="left"><p><small>Last revised: March 22, 2025 at 08:10:08 GMT</small></p></td>
 <td align="right"><div class="copyright-footer"></div></td>
 </tr></table>
 <hr>

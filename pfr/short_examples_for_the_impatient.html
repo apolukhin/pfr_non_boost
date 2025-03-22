@@ -64,7 +64,7 @@
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="get_idm2511.html" title="Function template get">pfr::get</a></code>
+                <code class="computeroutput"><a class="link" href="get_idm2806.html" title="Function template get">pfr::get</a></code>
               </p>
             </td>
 </tr>
@@ -73,12 +73,12 @@
 <pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Get name of field by index</span>
 
 <span class="keyword">struct</span> <span class="identifier">sample</span> <span class="special">{</span>
-    <span class="keyword">int</span> <span class="identifier">f1</span><span class="special">;</span>
-    <span class="keyword">long</span> <span class="identifier">f2</span><span class="special">;</span>
+    <span class="keyword">int</span> <span class="identifier">f_int</span><span class="special">;</span>
+    <span class="keyword">long</span> <span class="identifier">f_long</span><span class="special">;</span>
 <span class="special">};</span>
 
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">get_name</span><span class="special">&lt;</span><span class="number">0</span><span class="special">,</span> <span class="identifier">sample</span><span class="special">&gt;()</span>
-          <span class="special">&lt;&lt;</span> <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">get_name</span><span class="special">&lt;</span><span class="number">1</span><span class="special">,</span> <span class="identifier">sample</span><span class="special">&gt;();</span> <span class="comment">// Outputs: f1 f2</span>
+          <span class="special">&lt;&lt;</span> <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">get_name</span><span class="special">&lt;</span><span class="number">1</span><span class="special">,</span> <span class="identifier">sample</span><span class="special">&gt;();</span> <span class="comment">// Outputs: f_int f_long</span>
 </pre>
             </td>
 <td>
@@ -107,13 +107,13 @@
                 <code class="computeroutput">pfr/ops.hpp</code>:
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="eq_idm3122.html" title="Function template eq">pfr::eq</a></code>
+                * <code class="computeroutput"><a class="link" href="eq_idm3446.html" title="Function template eq">pfr::eq</a></code>
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="ne_idm3148.html" title="Function template ne">pfr::ne</a></code>
+                * <code class="computeroutput"><a class="link" href="ne_idm3472.html" title="Function template ne">pfr::ne</a></code>
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="gt_idm3200.html" title="Function template gt">pfr::gt</a></code>
+                * <code class="computeroutput"><a class="link" href="gt_idm3524.html" title="Function template gt">pfr::gt</a></code>
               </p>
               <p>
                 * ...
@@ -146,6 +146,33 @@
               </p>
               <p>
                 <code class="computeroutput"><a class="link" href="io.html" title="Function template io">pfr::io</a></code>
+              </p>
+            </td>
+</tr>
+<tr>
+<td>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Print the name and value</span>
+<span class="comment">// of each element of the structure</span>
+
+<span class="keyword">struct</span> <span class="identifier">test</span> <span class="special">{</span>
+    <span class="keyword">int</span> <span class="identifier">n</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">str</span><span class="special">;</span>
+<span class="special">};</span>
+
+<span class="identifier">test</span> <span class="identifier">var</span><span class="special">{</span><span class="number">42</span><span class="special">,</span> <span class="string">"Hello, World!"</span><span class="special">};</span>
+
+<span class="comment">// Outputs:</span>
+<span class="comment">//  n: 42</span>
+<span class="comment">//  str: Hello, World!</span>
+<span class="identifier">pfr</span><span class="special">::</span><span class="identifier">for_each_field_with_name</span><span class="special">(</span><span class="identifier">var</span><span class="special">,</span>
+  <span class="special">[](</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">string_view</span> <span class="identifier">name</span><span class="special">,</span> <span class="keyword">const</span> <span class="keyword">auto</span><span class="special">&amp;</span> <span class="identifier">value</span><span class="special">)</span> <span class="special">{</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">name</span> <span class="special">&lt;&lt;</span> <span class="string">": "</span> <span class="special">&lt;&lt;</span> <span class="identifier">value</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+<span class="special">});</span>
+</pre>
+            </td>
+<td>
+              <p>
+                <code class="computeroutput"><a class="link" href="for_each_field_with_name.html" title="Function template for_each_field_with_name">pfr::for_each_field_with_name</a></code>
               </p>
             </td>
 </tr>
@@ -304,7 +331,7 @@
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="structure_tie_idm2616.html" title="Function template structure_tie">pfr::structure_tie</a></code>
+                <code class="computeroutput"><a class="link" href="structure_tie_idm2911.html" title="Function template structure_tie">pfr::structure_tie</a></code>
               </p>
             </td>
 </tr>
@@ -314,7 +341,8 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2016-2023 Antony Polukhin<p>
+<td align="right"><div class="copyright-footer">Copyright © 2016-2024 Antony
+      Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
