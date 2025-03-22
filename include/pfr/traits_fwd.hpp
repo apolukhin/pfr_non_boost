@@ -11,8 +11,12 @@
 
 namespace pfr {
 
+PFR_BEGIN_MODULE_EXPORT
+
 template<class T, class WhatFor>
 struct is_reflectable;
+
+PFR_END_MODULE_EXPORT
 
 } // namespace pfr
 

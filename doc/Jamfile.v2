@@ -18,7 +18,7 @@ project pfr/doc ;
 
 #
 # Common params for doxygen
-# 
+#
 
 local doxygen_params =
         <doxygen:param>EXTRACT_ALL=NO

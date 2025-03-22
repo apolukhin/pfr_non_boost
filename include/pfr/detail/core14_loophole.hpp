@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2018 Alexandr Poltavsky, Antony Polukhin.
-// Copyright (c) 2019-2023 Antony Polukhin.
+// Copyright (c) 2019-2024 Antony Polukhin.
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -24,10 +24,13 @@
 
 #include <pfr/detail/config.hpp>
 
+#ifdef PFR_HAS_STD_MODULE
+import std;
+#else
 #include <type_traits>
 #include <utility>
+#endif
 
-#include <pfr/detail/cast_to_layout_compatible.hpp> // still needed for enums
 #include <pfr/detail/offset_based_getter.hpp>
 #include <pfr/detail/fields_count.hpp>
 #include <pfr/detail/make_flat_tuple_of_references.hpp>

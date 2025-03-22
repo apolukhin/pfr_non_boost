@@ -1,7 +1,7 @@
 [library PFR
     [quickbook 1.6]
     [version 2.2]
-    [copyright 2016-2023 Antony Polukhin]
+    [copyright 2016-2024 Antony Polukhin]
     [category Language Features Emulation]
     [license
         Distributed under the Boost Software License, Version 1.0.
@@ -161,7 +161,7 @@ void Write(Writer& writer, int value);
 void Write(Writer& writer, std::string_view value);
 
 template <typename T>
-std::enable_if_t<std::is_aggregate_v<T>> Write(Writer& writer, const T& value) {
+std::enable_if_t<pfr::is_implicitly_reflectable_v<T>> Write(Writer& writer, const T& value) {
   pfr::for_each_field(
       value, [&writer](const auto& field) { Write(writer, field); });
 }
@@ -230,6 +230,9 @@ PFR is a header only library that does not depend on Boost. You can just copy th
 
         [funcref pfr::io]
     ]
+][
+    [ [pfr_quick_examples_for_each_with_name] ]
+    [ [funcref pfr::for_each_field_with_name] ]
 ][
     [ [pfr_quick_examples_functions_for] ]
     [ [macroref PFR_FUNCTIONS_FOR] ]
@@ -490,9 +493,7 @@ struct aggregate : empty { // not a SimpleAggregate
 ```
 The library may work with aggregates that don't satisfy the requirements of `SimpleAggregate`, but the behavior tends to be non-portable.
 
-PFRs extraction of field name works with a `SimpleAggregate` with non-internal linkage (with aggregats that could be used as `extern T t;`).
-Do not use this functionality with anonymous structures, local structures
-or a structure defined inside anonymous namespace as the behavior tends to be non-portable.
+PFRs extraction of field name works with only `SimpleAggregate` types.
 
 
 [h2 Configuration Macro]
@@ -551,7 +552,43 @@ parameters provided to `PFR_CORE_NAME_PARSING` macro [*and] the initial output o
 
 [endsect]
 
+[section PFR as a C++20 module]
+
+[caution C++20 PFR module support is on early stage, targets and flags may change in the future]
+
+If using CMake of version 3.28.0 or higher define CMake option `-DBUILD_MODULE=1`
+to make the `Boost::pfr_module` and `Boost::pfr_module_migration` libraries
+available. With `Boost::pfr_module` C++20 module PFR could be used:
+
+[import ../module/usage_sample.cpp]
+[pfr_module_example]
+
+The `Boost::pfr_module_migration` CMake target gives an ability to
+mix includes and imports of the PFR library in different translation units.
+
+If not using CMake, then the module could be build manually from the
+`module/pfr.cppm` file. If mixing of includes in imports is desired, additionally
+define `PFR_ATTACH_TO_GLOBAL_MODULE` preprocessor macro to attach all the
+module entities to a global module and avoid ODR issues.
+
+For manual module build the following commands could be used for clang compiler:
+
+```
+cd pfr/module
+clang++ -I ../include -std=c++20 --precompile -x c++-module pfr.cppm
+```
+
+After that, the module could be used in the following way:
+
+```
+clang++ -std=c++20 -fmodule-file=pfr.pcm pfr.pcm usage_sample.cpp
+```
+
+[endsect]
+
 [section How it works]
+
+[h2 Fields count detection and getting references to members]
 
 Short description:
 
@@ -578,6 +615,17 @@ Short description:
 Long description of some basics: [@https://youtu.be/UlNUNxLtBI0 Antony Polukhin: Better C++14 reflections].
 Long description of some basics of C++14 with [link pfr.limitations_and_configuration [*PFR_USE_LOOPHOLE == 0]]: [@https://youtu.be/abdeAew3gmQ Antony Polukhin: C++14 Reflections Without Macros, Markup nor External Tooling].
 Description of the [*PFR_USE_LOOPHOLE == 1] technique by its inventor Alexandr Poltavsky [@http://alexpolt.github.io/type-loophole.html in his blog].
+
+[h2 Field name retrieval]
+
+# at compile-time:
+    * Get references to members of an object of type `T` in `constexpr` function
+    * Feed the reference from previous as a template parameter to a `constexpr` function with `template <auto member_ptr>`.
+      That function returns `__PRETTY_FUNCTION__` or some other vendor specific macro that prints the whole name of a function
+      along with the template arguments.
+    * The returned value from previous step contains the member name ([@https://godbolt.org/z/K4aWdcE9G godbolt example]). Do some
+      compiler specific parsing of the value and make a `std::string_view` that contains only the member name.
+# at run-time: return the `std::string_view` with the member name.
 
 [endsect]
 

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# Copyright (c) 2016-2023 Antony Polukhin
+# Copyright (c) 2016-2024 Antony Polukhin
 # Copyright (c) 2023 Denis Mikhailov
 #
 # Distributed under the Boost Software License, Version 1.0. (See accompanying
@@ -15,7 +15,7 @@ import string
 ascii_letters = string.ascii_letters.replace("o", "").replace("O", "").replace("i", "").replace("I", "").replace("T", "")
 WORKAROUND_CAST_EXPRESSIONS_LIMIT_PER_LINE = 3
 
-PROLOGUE = """// Copyright (c) 2016-2023 Antony Polukhin
+PROLOGUE = """// Copyright (c) 2016-2024 Antony Polukhin
 // Copyright (c) 2023 Denis Mikhailov
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
@@ -38,7 +38,12 @@ PROLOGUE = """// Copyright (c) 2016-2023 Antony Polukhin
 
 #include <pfr/detail/sequence_tuple.hpp>
 #include <pfr/detail/size_t_.hpp>
+
+#ifdef PFR_HAS_STD_MODULE
+import std;
+#else
 #include <type_traits> // for std::conditional_t, std::is_reference
+#endif
 
 namespace pfr { namespace detail {
 
@@ -134,7 +139,7 @@ class EmptyLinePrinter:
 
 indexes = "    a"
 print(PROLOGUE)
-funcs_count = 100 if len(sys.argv) == 1 else int(sys.argv[1])
+funcs_count = 200 if len(sys.argv) == 1 else int(sys.argv[1])
 max_args_on_a_line = len(ascii_letters)
 for i in range(1, funcs_count):
     if i % max_args_on_a_line == 0:

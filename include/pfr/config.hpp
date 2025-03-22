@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2023 Antony Polukhin
+// Copyright (c) 2016-2024 Antony Polukhin
 // Copyright (c) 2022 Denis Mikhailov
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
@@ -113,7 +113,7 @@
 
 
 #ifndef PFR_CORE_NAME_PARSING
-#   if defined(_MSC_VER)
+#   if defined(_MSC_VER) && !defined(__clang__)
 #       define PFR_CORE_NAME_PARSING (sizeof("auto __cdecl pfr::detail::name_of_field_impl<") - 1, sizeof(">(void) noexcept") - 1, backward("->"))
 #   elif defined(__clang__)
 #       define PFR_CORE_NAME_PARSING (sizeof("auto pfr::detail::name_of_field_impl() [MsvcWorkaround = ") - 1, sizeof("}]") - 1, backward("."))
@@ -144,5 +144,13 @@
 #endif
 
 #undef PFR_NOT_SUPPORTED
+
+#ifndef PFR_BEGIN_MODULE_EXPORT
+#   define PFR_BEGIN_MODULE_EXPORT
+#endif
+
+#ifndef PFR_END_MODULE_EXPORT
+#   define PFR_END_MODULE_EXPORT
+#endif
 
 #endif // PFR_CONFIG_HPP

@@ -1,4 +1,4 @@
-// Copyright 2016-2023 Antony Polukhin
+// Copyright 2016-2024 Antony Polukhin
 
 // Distributed under the Boost Software License, Version 1.0.
 // (See the accompanying file LICENSE_1_0.txt
@@ -77,6 +77,35 @@ void test_examples() {
   }
 
 
+// Disabling for MSVC as it gives a hard error on using local types:
+//
+// error C7631:
+// 'pfr::detail::do_not_use_PFR_with_local_types<test_examples::sample>':
+// variable with internal linkage declared but not defined
+#if PFR_CORE_NAME_ENABLED && PFR_USE_CPP17 && !defined(_MSC_VER)
+  {
+//[pfr_quick_examples_for_each_with_name
+    // Print the name and value
+    // of each element of the structure
+
+    struct test {
+        int n;
+        std::string str;
+    };
+
+    test var{42, "Hello, World!"};
+
+    // Outputs:
+    //  n: 42
+    //  str: Hello, World!
+    pfr::for_each_field_with_name(var,
+      [](std::string_view name, const auto& value) {
+        std::cout << name << ": " << value << std::endl;
+    });
+//]
+  }
+#endif
+
   {
 //[pfr_quick_examples_tuple_size
     // Getting fields count of some structure
@@ -106,19 +135,23 @@ void test_examples() {
 //]
   }
 
-  // Disabled from testing since it's unportable
-#if 0
+// Disabling for MSVC as it gives a hard error on using local types:
+//
+// error C7631:
+// 'pfr::detail::do_not_use_PFR_with_local_types<test_examples::sample>':
+// variable with internal linkage declared but not defined
+#if PFR_CORE_NAME_ENABLED && PFR_USE_CPP17 && !defined(_MSC_VER)
   {
 //[pfr_quick_examples_get_name
     // Get name of field by index
 
     struct sample {
-        int f1;
-        long f2;
+        int f_int;
+        long f_long;
     };
 
     std::cout << pfr::get_name<0, sample>()
-              << pfr::get_name<1, sample>(); // Outputs: f1 f2
+              << pfr::get_name<1, sample>(); // Outputs: f_int f_long
 //]
   }
 #endif
