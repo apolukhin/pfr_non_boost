@@ -9,8 +9,13 @@
 
 #include <pfr/detail/config.hpp>
 
+#if !defined(PFR_USE_MODULES) || defined(PFR_INTERFACE_UNIT)
+
 #include <pfr/detail/possible_reflectable.hpp>
+
+#if !defined(PFR_INTERFACE_UNIT)
 #include <type_traits>
+#endif
 
 /// \file pfr/traits.hpp
 /// Contains traits \forcedlink{is_reflectable} and \forcedlink{is_implicitly_reflectable} for detecting an ability to reflect type.
@@ -59,6 +64,8 @@ constexpr bool is_implicitly_reflectable_v = is_implicitly_reflectable<T, WhatFo
 PFR_END_MODULE_EXPORT
 
 } // namespace pfr
+
+#endif  // #if !defined(PFR_USE_MODULES) || defined(PFR_INTERFACE_UNIT)
 
 #endif // PFR_TRAITS_HPP
 

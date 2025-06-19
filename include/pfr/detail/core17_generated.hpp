@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2024 Antony Polukhin
+// Copyright (c) 2016-2025 Antony Polukhin
 // Copyright (c) 2023 Denis Mikhailov
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
@@ -22,9 +22,7 @@
 #include <pfr/detail/sequence_tuple.hpp>
 #include <pfr/detail/size_t_.hpp>
 
-#ifdef PFR_HAS_STD_MODULE
-import std;
-#else
+#if !defined(PFR_INTERFACE_UNIT)
 #include <type_traits> // for std::conditional_t, std::is_reference
 #endif
 

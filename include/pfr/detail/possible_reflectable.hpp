@@ -10,9 +10,7 @@
 #include <pfr/detail/config.hpp>
 #include <pfr/traits_fwd.hpp>
 
-#ifdef PFR_HAS_STD_MODULE
-import std;
-#else
+#if !defined(PFR_INTERFACE_UNIT)
 #include <type_traits> // for std::is_aggregate
 #endif
 

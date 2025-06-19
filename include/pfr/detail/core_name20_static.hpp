@@ -22,9 +22,7 @@
 #include <pfr/detail/sequence_tuple.hpp>
 #include <pfr/detail/stdarray.hpp>
 
-#ifdef PFR_HAS_STD_MODULE
-import std;
-#else
+#if !defined(PFR_INTERFACE_UNIT)
 #include <type_traits>
 #include <string_view>
 #include <array>

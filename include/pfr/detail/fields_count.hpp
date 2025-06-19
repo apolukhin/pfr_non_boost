@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2024 Antony Polukhin
+// Copyright (c) 2016-2025 Antony Polukhin
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -12,11 +12,8 @@
 #include <pfr/detail/size_t_.hpp>
 #include <pfr/detail/unsafe_declval.hpp>
 
-#ifdef PFR_HAS_STD_MODULE
-import std;
-#else
-#include <climits>      // CHAR_BIT
-#include <cstdint>      // SIZE_MAX
+#if !defined(PFR_INTERFACE_UNIT)
+#include <limits>
 #include <type_traits>
 #include <utility>      // metaprogramming stuff
 #endif
@@ -218,13 +215,13 @@ constexpr std::size_t fields_count_compiler_limitation_next(std::size_t n) noexc
 #else
     static_cast<void>(n);
 #endif
-    return SIZE_MAX;
+    return (std::numeric_limits<std::size_t>::max)();
 }
 
 ///////////////////// Fields count upper bound based on sizeof(T)
 template <class T>
 constexpr std::size_t fields_count_upper_bound_loose() noexcept {
-    return sizeof(T) * CHAR_BIT;
+    return sizeof(T) * std::numeric_limits<unsigned char>::digits;
 }
 
 ///////////////////// Fields count binary search.

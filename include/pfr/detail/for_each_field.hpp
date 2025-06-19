@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2024 Antony Polukhin
+// Copyright (c) 2016-2025 Antony Polukhin
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -9,16 +9,14 @@
 
 #include <pfr/detail/config.hpp>
 
-#ifdef PFR_HAS_STD_MODULE
-import std;
-#else
-#include <type_traits>      // metaprogramming stuff
-#endif
-
 #include <pfr/detail/core.hpp>
 #include <pfr/detail/fields_count.hpp>
 #include <pfr/detail/for_each_field_impl.hpp>
 #include <pfr/detail/make_integer_sequence.hpp>
+
+#if !defined(PFR_INTERFACE_UNIT)
+#include <type_traits>      // metaprogramming stuff
+#endif
 
 namespace pfr { namespace detail {
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2024 Antony Polukhin
+// Copyright (c) 2016-2025 Antony Polukhin
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -9,6 +9,8 @@
 
 #include <pfr/detail/config.hpp>
 
+#if !defined(PFR_USE_MODULES) || defined(PFR_INTERFACE_UNIT)
+
 #include <pfr/detail/core.hpp>
 
 #include <pfr/detail/sequence_tuple.hpp>
@@ -17,10 +19,12 @@
 #include <pfr/detail/make_integer_sequence.hpp>
 #include <pfr/detail/tie_from_structure_tuple.hpp>
 
+#include <pfr/tuple_size.hpp>
+
+#if !defined(PFR_INTERFACE_UNIT)
 #include <type_traits>
 #include <utility>      // metaprogramming stuff
-
-#include <pfr/tuple_size.hpp>
+#endif
 
 /// \file pfr/core.hpp
 /// Contains all the basic tuple-like interfaces \forcedlink{get}, \forcedlink{tuple_size}, \forcedlink{tuple_element_t}, and others.
@@ -248,5 +252,7 @@ constexpr detail::tie_from_structure_tuple<Elements...> tie_from_structure(Eleme
 PFR_END_MODULE_EXPORT
 
 } // namespace pfr
+
+#endif  // #if !defined(PFR_USE_MODULES) || defined(PFR_INTERFACE_UNIT)
 
 #endif // PFR_CORE_HPP

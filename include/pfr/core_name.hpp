@@ -14,15 +14,19 @@
 
 #include <pfr/detail/config.hpp>
 
+#if !defined(PFR_USE_MODULES) || defined(PFR_INTERFACE_UNIT)
+
 #include <pfr/detail/core_name.hpp>
 
 #include <pfr/detail/sequence_tuple.hpp>
 #include <pfr/detail/stdarray.hpp>
 #include <pfr/detail/make_integer_sequence.hpp>
 
-#include <cstddef> // for std::size_t
-
 #include <pfr/tuple_size.hpp>
+
+#if !defined(PFR_INTERFACE_UNIT)
+#include <cstddef> // for std::size_t
+#endif
 
 /// \file pfr/core_name.hpp
 /// Contains functions \forcedlink{get_name} and \forcedlink{names_as_array} to know which names each field of any \aggregate has.
@@ -79,8 +83,7 @@ auto
 names_as_array() noexcept {
     return detail::make_stdarray_from_tietuple(
         detail::tie_as_names_tuple<T>(),
-        detail::make_index_sequence< tuple_size_v<T> >(),
-        1L
+        detail::make_index_sequence< tuple_size_v<T> >()
     );
 }
 
@@ -109,5 +112,7 @@ constexpr void for_each_field_with_name(T&& value, F&& func) {
 PFR_END_MODULE_EXPORT
 
 } // namespace pfr
+
+#endif  // #if !defined(PFR_USE_MODULES) || defined(PFR_INTERFACE_UNIT)
 
 #endif // PFR_CORE_NAME_HPP

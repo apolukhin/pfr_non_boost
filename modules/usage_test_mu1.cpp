@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2024 Antony Polukhin
+// Copyright (c) 2016-2025 Antony Polukhin
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -6,19 +6,16 @@
 // To compile manually use a command like the folowing:
 // clang++ -std=c++20 -fmodule-file=pfr.pcm pfr.pcm usage_sample.cpp
 
-//[pfr_module_example
 #include <iostream>
-#include <iomanip>
-#include <string>
 
-import Boost.PFR;
+#include <pfr.hpp>
 
 struct some_person {
     std::string name;
     unsigned birth_year;
 };
 
-int main() {
+void mu1_act() {
     some_person val{"Edgar Allan Poe", 1809};
 
     std::cout << pfr::get<0>(val)                // No macro!
@@ -28,4 +25,3 @@ int main() {
     std::cout << "\n." << pfr::get_name<0, some_person>()
         << '=' << val.name << '\n';                     // Outputs: .name=Edgar Allan Poe
 }
-//]
