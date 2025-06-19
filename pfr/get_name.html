@@ -4,7 +4,7 @@
 <title>Function template get_name</title>
 <link rel="stylesheet" href="https://www.boost.org/doc/libs/1_81_0/doc/src/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
-<link rel="home" href="../index.html" title="Chapter 1. PFR 2.2">
+<link rel="home" href="../index.html" title="Chapter 1. PFR 2.3">
 <link rel="up" href="../reference_section_of_pfr.html#header.boost.include.pfr.core_name_hpp" title="Header &lt;pfr/core_name.hpp&gt;">
 <link rel="prev" href="tie_from_structure.html" title="Function template tie_from_structure">
 <link rel="next" href="names_as_array.html" title="Function template names_as_array">
@@ -26,16 +26,16 @@
 <a name="pfr.get_name"></a><div class="titlepage"></div>
 <div class="refnamediv">
 <h2><span class="refentrytitle">Function template get_name</span></h2>
-<p>pfr::get_name — Returns name of a field with index <code class="computeroutput">I</code> in <a class="link" href="limitations_and_configuration.html" title="Limitations and Configuration"> simple aggregate </a><code class="computeroutput">T</code>. </p>
+<p>pfr::get_name — Returns name of a field with index <code class="computeroutput">I</code> in  <a class="link" href="limitations_and_configuration.html" title="Limitations and Configuration"> simple aggregate  </a><code class="computeroutput">T</code>. </p>
 </div>
-<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
-<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../reference_section_of_pfr.html#header.boost.include.pfr.core_name_hpp" title="Header &lt;pfr/core_name.hpp&gt;">pfr/core_name.hpp</a>&gt;
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../reference_section_of_pfr.html#header.boost.include.pfr.core_name_hpp" title="Header &lt;pfr/core_name.hpp&gt;">pfr/core_name.hpp</a>&gt;
 
 </span>
 <span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> I<span class="special">,</span> <span class="keyword">typename</span> T<span class="special">&gt;</span> 
-  <span class="keyword">constexpr</span> <span class="identifier">PFR_BEGIN_MODULE_EXPORT</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string_view</span> <span class="identifier">get_name</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></div>
+  <span class="identifier">PFR_BEGIN_MODULE_EXPORT</span> <span class="keyword">constexpr</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string_view</span> <span class="identifier">get_name</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm4104"></a><h2>Description</h2>
+<a name="id4150"></a><h2>Description</h2>
 <p><span class="bold"><strong>Example:</strong></span> </p>
 <pre class="programlisting"><span class="keyword">struct</span> <span class="identifier">my_struct</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">i</span><span class="special">,</span> <span class="keyword">short</span> <span class="identifier">s</span><span class="special">;</span> <span class="special">}</span><span class="special">;</span>
 
@@ -45,10 +45,9 @@
 <p> </p>
 </div>
 </div>
-<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2016-2024 Antony
-      Polukhin<p>
+<td align="right"><div class="copyright-footer">Copyright © 2016-2025 Antony Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

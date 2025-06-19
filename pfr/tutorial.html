@@ -4,8 +4,8 @@
 <title>Tutorial</title>
 <link rel="stylesheet" href="https://www.boost.org/doc/libs/1_81_0/doc/src/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
-<link rel="home" href="../index.html" title="Chapter 1. PFR 2.2">
-<link rel="up" href="../index.html" title="Chapter 1. PFR 2.2">
+<link rel="home" href="../index.html" title="Chapter 1. PFR 2.3">
+<link rel="up" href="../index.html" title="Chapter 1. PFR 2.3">
 <link rel="prev" href="short_examples_for_the_impatient.html" title="Short Examples for the Impatient">
 <link rel="next" href="limitations_and_configuration.html" title="Limitations and Configuration">
 </head>
@@ -70,7 +70,7 @@
 </tr></thead>
 <tbody><tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="keyword">using</span> <span class="identifier">auth_info_tuple</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">tuple</span><span class="special">&lt;</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="keyword">using</span> <span class="identifier">auth_info_tuple</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">tuple</span><span class="special">&lt;</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">int64_t</span><span class="special">,</span> <span class="comment">// What does this integer represents?</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">int64_t</span><span class="special">,</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">time_t</span>
@@ -78,7 +78,7 @@
 </pre>
               </td>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="keyword">struct</span> <span class="identifier">auth_info_aggregate</span> <span class="special">{</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="keyword">struct</span> <span class="identifier">auth_info_aggregate</span> <span class="special">{</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">int64_t</span> <span class="identifier">user_id</span><span class="special">;</span>    <span class="comment">// Oh, now I see!</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">int64_t</span> <span class="identifier">session_id</span><span class="special">;</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">time_t</span>  <span class="identifier">valid_till</span><span class="special">;</span>
@@ -115,7 +115,7 @@
 </h3></div></div></div>
 <p>
         The following example shows how to access structure fields by index using
-        <code class="computeroutput"><a class="link" href="get_idm2806.html" title="Function template get">pfr::get</a></code>.
+        <code class="computeroutput"><a class="link" href="get_id2.html" title="Function template get">pfr::get</a></code>.
       </p>
 <p>
         Let's define some structure:
@@ -536,10 +536,9 @@
       </p>
 </div>
 </div>
-<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2016-2024 Antony
-      Polukhin<p>
+<td align="right"><div class="copyright-footer">Copyright © 2016-2025 Antony Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -4,7 +4,7 @@
 <title>Struct template greater_equal</title>
 <link rel="stylesheet" href="https://www.boost.org/doc/libs/1_81_0/doc/src/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
-<link rel="home" href="../index.html" title="Chapter 1. PFR 2.2">
+<link rel="home" href="../index.html" title="Chapter 1. PFR 2.3">
 <link rel="up" href="../reference_section_of_pfr.html#header.boost.include.pfr.functors_hpp" title="Header &lt;pfr/functors.hpp&gt;">
 <link rel="prev" href="greater.html" title="Struct template greater">
 <link rel="next" href="hash.html" title="Struct template hash">
@@ -26,28 +26,28 @@
 <a name="pfr.greater_equal"></a><div class="titlepage"></div>
 <div class="refnamediv">
 <h2><span class="refentrytitle">Struct template greater_equal</span></h2>
-<p>pfr::greater_equal — std::greater_equal like comparator that returns <a class="link" href="../"> pfr::ge </a>(x, y) </p>
+<p>pfr::greater_equal — std::greater_equal like comparator that returns  <a class="link" href="../"> pfr::ge </a>(x, y) </p>
 </div>
-<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
-<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../reference_section_of_pfr.html#header.boost.include.pfr.functors_hpp" title="Header &lt;pfr/functors.hpp&gt;">pfr/functors.hpp</a>&gt;
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../reference_section_of_pfr.html#header.boost.include.pfr.functors_hpp" title="Header &lt;pfr/functors.hpp&gt;">pfr/functors.hpp</a>&gt;
 
 </span><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T <span class="special">=</span> <span class="keyword">void</span><span class="special">&gt;</span> 
 <span class="keyword">struct</span> <a class="link" href="greater_equal.html" title="Struct template greater_equal">greater_equal</a> <span class="special">{</span>
   <span class="comment">// types</span>
   <span class="keyword">typedef</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">true_type</span> <a name="pfr.greater_equal.is_transparent"></a><span class="identifier">is_transparent</span><span class="special">;</span>  <span class="comment">// This typedef exists only if T <span class="bold"><strong>is</strong></span> void. </span>
 
-  <span class="comment">// <a class="link" href="greater_equal.html#idm3195-bb">public member functions</a></span>
-  <span class="keyword">bool</span> <a class="link" href="greater_equal.html#idm3196-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> V<span class="special">,</span> <span class="keyword">typename</span> U<span class="special">&gt;</span> <span class="keyword">bool</span> <a class="link" href="greater_equal.html#idm3213-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">V</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">U</span> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="greater_equal.html#id29-bb">public member functions</a></span>
+  <span class="keyword">bool</span> <a class="link" href="greater_equal.html#id30-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> V<span class="special">,</span> <span class="keyword">typename</span> U<span class="special">&gt;</span> <span class="keyword">bool</span> <a class="link" href="greater_equal.html#id31-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">V</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">U</span> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm5234"></a><h2>Description</h2>
+<a name="id5266"></a><h2>Description</h2>
 <div class="refsect2">
-<a name="idm5236"></a><h3>
-<a name="idm3195-bb"></a><code class="computeroutput">greater_equal</code> public member functions</h3>
+<a name="id5268"></a><h3>
+<a name="id29-bb"></a><code class="computeroutput">greater_equal</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="idm3196-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> x<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> y<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="id30-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> x<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> y<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>
 </p>
 <div class="variablelist"><table border="0">
@@ -60,7 +60,7 @@
 </li>
 <li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> V<span class="special">,</span> <span class="keyword">typename</span> U<span class="special">&gt;</span> 
-  <span class="keyword">bool</span> <a name="idm3213-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">V</span> <span class="special">&amp;</span> x<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">U</span> <span class="special">&amp;</span> y<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
+  <span class="keyword">bool</span> <a name="id31-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">V</span> <span class="special">&amp;</span> x<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">U</span> <span class="special">&amp;</span> y<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>
 <p>This operator allows comparison of <span class="bold"><strong>x</strong></span> and <span class="bold"><strong>y</strong></span> that have different type. 
 </p>
 <div class="variablelist"><table border="0">
@@ -75,10 +75,9 @@
 </div>
 </div>
 </div>
-<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2016-2024 Antony
-      Polukhin<p>
+<td align="right"><div class="copyright-footer">Copyright © 2016-2025 Antony Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

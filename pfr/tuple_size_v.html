@@ -4,7 +4,7 @@
 <title>Global tuple_size_v</title>
 <link rel="stylesheet" href="https://www.boost.org/doc/libs/1_81_0/doc/src/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
-<link rel="home" href="../index.html" title="Chapter 1. PFR 2.2">
+<link rel="home" href="../index.html" title="Chapter 1. PFR 2.3">
 <link rel="up" href="../reference_section_of_pfr.html#header.boost.include.pfr.tuple_size_hpp" title="Header &lt;pfr/tuple_size.hpp&gt;">
 <link rel="prev" href="tuple_size.html" title="Type definition tuple_size">
 </head>
@@ -27,23 +27,22 @@
 <h2><span class="refentrytitle">Global tuple_size_v</span></h2>
 <p>pfr::tuple_size_v</p>
 </div>
-<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
-<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../reference_section_of_pfr.html#header.boost.include.pfr.tuple_size_hpp" title="Header &lt;pfr/tuple_size.hpp&gt;">pfr/tuple_size.hpp</a>&gt;
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../reference_section_of_pfr.html#header.boost.include.pfr.tuple_size_hpp" title="Header &lt;pfr/tuple_size.hpp&gt;">pfr/tuple_size.hpp</a>&gt;
 
 </span><span class="keyword">constexpr</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> tuple_size_v<span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm7781"></a><h2>Description</h2>
-<p><code class="computeroutput">tuple_size_v</code> is a template variable that contains fields count in a T and works for any T that satisfies <a class="link" href="limitations_and_configuration.html" title="Limitations and Configuration"> simple aggregate </a>.</p>
+<a name="id7780"></a><h2>Description</h2>
+<p><code class="computeroutput">tuple_size_v</code> is a template variable that contains fields count in a T and works for any T that satisfies  <a class="link" href="limitations_and_configuration.html" title="Limitations and Configuration"> simple aggregate  </a>.</p>
 <p><span class="bold"><strong>Example:</strong></span> </p>
 <pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">array</span><span class="special">&lt;</span><span class="keyword">int</span><span class="special">,</span> <span class="identifier">pfr</span><span class="special">::</span><span class="identifier">tuple_size_v</span><span class="special">&lt;</span><span class="identifier">my_structure</span><span class="special">&gt;</span> <span class="special">&gt;</span> <span class="identifier">a</span><span class="special">;</span>
 </pre>
 <p> </p>
 </div>
 </div>
-<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2016-2024 Antony
-      Polukhin<p>
+<td align="right"><div class="copyright-footer">Copyright © 2016-2025 Antony Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

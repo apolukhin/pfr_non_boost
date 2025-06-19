@@ -4,8 +4,8 @@
 <title>PFR as a C++20 module</title>
 <link rel="stylesheet" href="https://www.boost.org/doc/libs/1_81_0/doc/src/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
-<link rel="home" href="../index.html" title="Chapter 1. PFR 2.2">
-<link rel="up" href="../index.html" title="Chapter 1. PFR 2.2">
+<link rel="home" href="../index.html" title="Chapter 1. PFR 2.3">
+<link rel="up" href="../index.html" title="Chapter 1. PFR 2.3">
 <link rel="prev" href="limitations_and_configuration.html" title="Limitations and Configuration">
 <link rel="next" href="how_it_works.html" title="How it works">
 </head>
@@ -32,21 +32,19 @@
 <th align="left">Caution</th>
 </tr>
 <tr><td align="left" valign="top"><p>
-        C++20 PFR module support is on early stage, targets and flags may change
-        in the future
+        C++20 PFR module support is on early stage, targets, flags and behavior may
+        change in the future
       </p></td></tr>
 </table></div>
 <p>
-      If using CMake of version 3.28.0 or higher define CMake option <code class="computeroutput"><span class="special">-</span><span class="identifier">DBUILD_MODULE</span><span class="special">=</span><span class="number">1</span></code> to make the
-      <code class="computeroutput"><span class="identifier">Boost</span><span class="special">::</span><span class="identifier">pfr_module</span></code> and <code class="computeroutput"><span class="identifier">Boost</span><span class="special">::</span><span class="identifier">pfr_module_migration</span></code>
-      libraries available. With <code class="computeroutput"><span class="identifier">Boost</span><span class="special">::</span><span class="identifier">pfr_module</span></code>
-      C++20 module PFR could be used:
+      If using modern CMake define CMake option <code class="computeroutput"><span class="special">-</span><span class="identifier">DPFR_USE_MODULES</span><span class="special">=</span><span class="number">1</span></code> to build a C++20 module and make the <code class="computeroutput"><span class="identifier">pfr</span><span class="special">::</span><span class="identifier">pfr</span></code>
+      CMake target provide it. After that an explicit usage of C++20 module <code class="computeroutput"><span class="identifier">pfr</span></code> is allowed:
     </p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iomanip</span><span class="special">&gt;</span>
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">string</span><span class="special">&gt;</span>
 
-<span class="identifier">import</span> <span class="identifier">Boost</span><span class="special">.</span><span class="identifier">PFR</span><span class="special">;</span>
+<span class="identifier">import</span> <span class="identifier">pfr</span><span class="special">;</span>
 
 <span class="keyword">struct</span> <span class="identifier">some_person</span> <span class="special">{</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">name</span><span class="special">;</span>
@@ -65,17 +63,33 @@
 <span class="special">}</span>
 </pre>
 <p>
-      The <code class="computeroutput"><span class="identifier">Boost</span><span class="special">::</span><span class="identifier">pfr_module_migration</span></code> CMake target gives an
-      ability to mix includes and imports of the PFR library in different translation
-      units.
+      The <code class="computeroutput"><span class="identifier">pfr</span><span class="special">::</span><span class="identifier">pfr</span></code> CMake target gives an ability to mix
+      includes and imports of the PFR library in different translation units. Moreover,
+      if <code class="computeroutput"><span class="identifier">PFR_USE_MODULES</span></code> macro is
+      defined then all the <code class="computeroutput"><span class="identifier">pfr</span><span class="special">/...</span></code>
+      includes implicitly do <code class="computeroutput"><span class="identifier">import</span> <span class="identifier">pfr</span><span class="special">;</span></code> to give
+      all the benifits of modules without changing the existing code.
+    </p>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="https://www.boost.org/doc/libs/1_81_0/doc/src/images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+        For better compile times make sure that <code class="computeroutput"><span class="identifier">import</span>
+        <span class="identifier">std</span><span class="special">;</span></code>
+        is available when building the <code class="computeroutput"><span class="identifier">pfr</span></code>
+        module (in CMake logs there should be a 'Using <code class="computeroutput"><span class="identifier">import</span>
+        <span class="identifier">std</span><span class="special">;</span></code>'
+        message).
+      </p></td></tr>
+</table></div>
+<p>
+      If not using CMake, then the module could be build manually from the <code class="computeroutput"><span class="identifier">modules</span><span class="special">/</span><span class="identifier">pfr</span><span class="special">.</span><span class="identifier">cppm</span></code>
+      file.
     </p>
 <p>
-      If not using CMake, then the module could be build manually from the <code class="computeroutput"><span class="identifier">module</span><span class="special">/</span><span class="identifier">pfr</span><span class="special">.</span><span class="identifier">cppm</span></code> file.
-      If mixing of includes in imports is desired, additionally define <code class="computeroutput"><span class="identifier">PFR_ATTACH_TO_GLOBAL_MODULE</span></code> preprocessor
-      macro to attach all the module entities to a global module and avoid ODR issues.
-    </p>
-<p>
-      For manual module build the following commands could be used for clang compiler:
+      For manual module build the following commands can be used for clang compiler:
     </p>
 <pre class="programlisting"><span class="identifier">cd</span> <span class="identifier">pfr</span><span class="special">/</span><span class="identifier">module</span>
 <span class="identifier">clang</span><span class="special">++</span> <span class="special">-</span><span class="identifier">I</span> <span class="special">../</span><span class="identifier">include</span> <span class="special">-</span><span class="identifier">std</span><span class="special">=</span><span class="identifier">c</span><span class="special">++</span><span class="number">20</span> <span class="special">--</span><span class="identifier">precompile</span> <span class="special">-</span><span class="identifier">x</span> <span class="identifier">c</span><span class="special">++-</span><span class="identifier">module</span> <span class="identifier">pfr</span><span class="special">.</span><span class="identifier">cppm</span>
@@ -86,10 +100,9 @@
 <pre class="programlisting"><span class="identifier">clang</span><span class="special">++</span> <span class="special">-</span><span class="identifier">std</span><span class="special">=</span><span class="identifier">c</span><span class="special">++</span><span class="number">20</span> <span class="special">-</span><span class="identifier">fmodule</span><span class="special">-</span><span class="identifier">file</span><span class="special">=</span><span class="identifier">pfr</span><span class="special">.</span><span class="identifier">pcm</span> <span class="identifier">pfr</span><span class="special">.</span><span class="identifier">pcm</span> <span class="identifier">usage_sample</span><span class="special">.</span><span class="identifier">cpp</span>
 </pre>
 </div>
-<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2016-2024 Antony
-      Polukhin<p>
+<td align="right"><div class="copyright-footer">Copyright © 2016-2025 Antony Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

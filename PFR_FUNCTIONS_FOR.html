@@ -4,7 +4,7 @@
 <title>Macro PFR_FUNCTIONS_FOR</title>
 <link rel="stylesheet" href="https://www.boost.org/doc/libs/1_81_0/doc/src/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
-<link rel="home" href="index.html" title="Chapter 1. PFR 2.2">
+<link rel="home" href="index.html" title="Chapter 1. PFR 2.3">
 <link rel="up" href="reference_section_of_pfr.html#header.boost.include.pfr.functions_for_hpp" title="Header &lt;pfr/functions_for.hpp&gt;">
 <link rel="prev" href="pfr/for_each_field_with_name.html" title="Function template for_each_field_with_name">
 <link rel="next" href="pfr/equal_to.html" title="Struct template equal_to">
@@ -28,12 +28,12 @@
 <h2><span class="refentrytitle">Macro PFR_FUNCTIONS_FOR</span></h2>
 <p>PFR_FUNCTIONS_FOR</p>
 </div>
-<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
-<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="reference_section_of_pfr.html#header.boost.include.pfr.functions_for_hpp" title="Header &lt;pfr/functions_for.hpp&gt;">pfr/functions_for.hpp</a>&gt;
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="reference_section_of_pfr.html#header.boost.include.pfr.functions_for_hpp" title="Header &lt;pfr/functions_for.hpp&gt;">pfr/functions_for.hpp</a>&gt;
 
 </span>PFR_FUNCTIONS_FOR(T)</pre></div>
 <div class="refsect1">
-<a name="idm4433"></a><h2>Description</h2>
+<a name="id4476"></a><h2>Description</h2>
 <p>Defines comparison and stream operators for T along with hash_value function.</p>
 <p><span class="bold"><strong>Example:</strong></span> </p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">pfr</span><span class="special">/</span><span class="identifier">functions_for</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
@@ -48,7 +48,7 @@
 <span class="identifier">assert</span><span class="special">(</span><span class="identifier">s1</span> <span class="special">&lt;</span> <span class="identifier">s2</span><span class="special">)</span><span class="special">;</span>
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">s1</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span> <span class="comment">// Outputs: {0, 1, H, e, l, l, o, , , 0, 6, 7, 8, 9, 10, 11}</span>
 </pre>
-<p><span class="bold"><strong>See</strong></span> <span class="bold"><strong>Also</strong></span> : <a class="link" href="pfr/tutorial.html#pfr.tutorial.three_ways_of_getting_operators" title="Three ways of getting operators"> 'Three ways of getting operators' </a> for other ways to define operators and more details.</p>
+<p><span class="bold"><strong>See</strong></span> <span class="bold"><strong>Also</strong></span> :  <a class="link" href="pfr/tutorial.html#pfr.tutorial.three_ways_of_getting_operators" title="Three ways of getting operators"> 'Three ways of getting operators'  </a> for other ways to define operators and more details.</p>
 <p><span class="bold"><strong>Defines</strong></span> <span class="bold"><strong>following</strong></span> <span class="bold"><strong>for</strong></span> <span class="bold"><strong>T:</strong></span> </p>
 <pre class="programlisting"><span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">lhs</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">rhs</span><span class="special">)</span><span class="special">;</span>
 <span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">!=</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">lhs</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">rhs</span><span class="special">)</span><span class="special">;</span>
@@ -69,10 +69,9 @@
 <p> </p>
 </div>
 </div>
-<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2016-2024 Antony
-      Polukhin<p>
+<td align="right"><div class="copyright-footer">Copyright © 2016-2025 Antony Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

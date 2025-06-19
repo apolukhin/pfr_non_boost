@@ -4,9 +4,9 @@
 <title>Short Examples for the Impatient</title>
 <link rel="stylesheet" href="https://www.boost.org/doc/libs/1_81_0/doc/src/boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
-<link rel="home" href="../index.html" title="Chapter 1. PFR 2.2">
-<link rel="up" href="../index.html" title="Chapter 1. PFR 2.2">
-<link rel="prev" href="../index.html" title="Chapter 1. PFR 2.2">
+<link rel="home" href="../index.html" title="Chapter 1. PFR 2.3">
+<link rel="up" href="../index.html" title="Chapter 1. PFR 2.3">
+<link rel="prev" href="../index.html" title="Chapter 1. PFR 2.3">
 <link rel="next" href="tutorial.html" title="Tutorial">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -48,7 +48,7 @@
 <tbody>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Get field by index/type and assign new value to that field</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="comment">// Get field by index/type and assign new value to that field</span>
 
 <span class="keyword">struct</span> <span class="identifier">sample</span> <span class="special">{</span>
     <span class="keyword">char</span> <span class="identifier">c</span><span class="special">;</span>
@@ -64,13 +64,13 @@
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="get_idm2806.html" title="Function template get">pfr::get</a></code>
+                <code class="computeroutput"><a class="link" href="get_id2.html" title="Function template get">pfr::get</a></code>
               </p>
             </td>
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Get name of field by index</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="comment">// Get name of field by index</span>
 
 <span class="keyword">struct</span> <span class="identifier">sample</span> <span class="special">{</span>
     <span class="keyword">int</span> <span class="identifier">f_int</span><span class="special">;</span>
@@ -89,7 +89,7 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Assert equality.</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="comment">// Assert equality.</span>
 <span class="comment">// Note that the equality operator for structure is not defined.</span>
 
 <span class="keyword">struct</span> <span class="identifier">test</span> <span class="special">{</span>
@@ -107,13 +107,13 @@
                 <code class="computeroutput">pfr/ops.hpp</code>:
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="eq_idm3446.html" title="Function template eq">pfr::eq</a></code>
+                * <code class="computeroutput"><a class="link" href="eq_id10.html" title="Function template eq">pfr::eq</a></code>
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="ne_idm3472.html" title="Function template ne">pfr::ne</a></code>
+                * <code class="computeroutput"><a class="link" href="ne_id12.html" title="Function template ne">pfr::ne</a></code>
               </p>
               <p>
-                * <code class="computeroutput"><a class="link" href="gt_idm3524.html" title="Function template gt">pfr::gt</a></code>
+                * <code class="computeroutput"><a class="link" href="gt_id14.html" title="Function template gt">pfr::gt</a></code>
               </p>
               <p>
                 * ...
@@ -122,7 +122,7 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Increment each field of the variable on 1 and</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="comment">// Increment each field of the variable on 1 and</span>
 <span class="comment">// output the content of the variable.</span>
 
 <span class="keyword">struct</span> <span class="identifier">test</span> <span class="special">{</span>
@@ -151,7 +151,7 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Print the name and value</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="comment">// Print the name and value</span>
 <span class="comment">// of each element of the structure</span>
 
 <span class="keyword">struct</span> <span class="identifier">test</span> <span class="special">{</span>
@@ -178,7 +178,7 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Define all the comparison and IO operators for my_structure type along</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="comment">// Define all the comparison and IO operators for my_structure type along</span>
 <span class="comment">// with hash_value function.</span>
 
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">pfr</span><span class="special">/</span><span class="identifier">functions_for</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
@@ -200,7 +200,7 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Define only the equality and inequality operators for my_eq_ne_structure.</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="comment">// Define only the equality and inequality operators for my_eq_ne_structure.</span>
 
 <span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">pfr</span><span class="special">/</span><span class="identifier">functions_for</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
 
@@ -246,7 +246,7 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Iterate over fields of a variable and output index and</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="comment">// Iterate over fields of a variable and output index and</span>
 <span class="comment">// type of a variable.</span>
 
 <span class="keyword">struct</span> <span class="identifier">tag0</span><span class="special">{};</span>
@@ -273,7 +273,7 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Getting fields count of some structure</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="comment">// Getting fields count of some structure</span>
 
 <span class="keyword">struct</span> <span class="identifier">some</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">a</span><span class="special">,</span><span class="identifier">b</span><span class="special">,</span><span class="identifier">c</span><span class="special">,</span><span class="identifier">d</span><span class="special">,</span><span class="identifier">e</span><span class="special">;</span> <span class="special">};</span>
 
@@ -290,7 +290,7 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Getting a std::tuple of values from structures fields</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="comment">// Getting a std::tuple of values from structures fields</span>
 
 <span class="keyword">struct</span> <span class="identifier">foo</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">a</span><span class="special">,</span> <span class="identifier">b</span><span class="special">;</span> <span class="special">};</span>
 <span class="keyword">struct</span> <span class="identifier">other</span> <span class="special">{</span>
@@ -314,7 +314,7 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Getting a std::tuple of references to structure fields</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" class="table-programlisting"><span class="comment">// Getting a std::tuple of references to structure fields</span>
 
 <span class="keyword">struct</span> <span class="identifier">foo</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">a</span><span class="special">,</span> <span class="identifier">b</span><span class="special">;</span> <span class="special">};</span>
 <span class="keyword">struct</span> <span class="identifier">other</span> <span class="special">{</span>
@@ -331,7 +331,7 @@
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="structure_tie_idm2911.html" title="Function template structure_tie">pfr::structure_tie</a></code>
+                <code class="computeroutput"><a class="link" href="structure_tie_id16.html" title="Function template structure_tie">pfr::structure_tie</a></code>
               </p>
             </td>
 </tr>
@@ -339,10 +339,9 @@
 </table>
 </div>
 </div>
-<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
+<table xmlns:rev="http://www.cs.rpi.edu/~gregod/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2016-2024 Antony
-      Polukhin<p>
+<td align="right"><div class="copyright-footer">Copyright © 2016-2025 Antony Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
